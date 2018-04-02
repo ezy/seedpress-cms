@@ -1,5 +1,8 @@
 ### Mustard API
 
+This is the express server that will ultimately be hosted on the EC2 instance for
+the production version of Mustard.
+
 * [Node.js](https://nodejs.org/en/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Sequelize](http://docs.sequelizejs.com/en/v3/)
@@ -8,7 +11,8 @@
 
 **Hosting**
 
-* [Heroku](https://www.heroku.com/)
+* AWS EC2
+<!-- * [Heroku](https://www.heroku.com/) -->
 
 **Testing**
 
@@ -19,7 +23,6 @@
 
 ### Features
 
-* [X] Linting (Airbnb)
 * [X] Authentication with JSON Web Token
 * [X] Email, Password validations
 * [X] User signup, signin
