@@ -56,7 +56,6 @@ heroku create
 git push heroku master
 ```
 
-
 #### Side Note
 
 With `sequelize-cli`
