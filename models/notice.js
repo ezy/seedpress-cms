@@ -14,9 +14,9 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.STRING,
     text: DataTypes.TEXT,
     frequency: DataTypes.STRING,
-    tags: DataTypes.ARRAY(DataTypes.STRING),
+    tags: { type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: [] },
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY(DataTypes.INTEGER)
+    churches: { type: DataTypes.ARRAY(DataTypes.INTEGER), defaultValue: [] }
   });
   return Notice;
 };

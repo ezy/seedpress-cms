@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     text: DataTypes.TEXT,
     speaker: DataTypes.STRING,
     category: DataTypes.STRING,
-    tags: DataTypes.ARRAY(DataTypes.STRING),
+    tags: { type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: [] },
     link: DataTypes.STRING,
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY(DataTypes.INTEGER)
+    churches: { type: DataTypes.ARRAY(DataTypes.INTEGER), defaultValue: [] }
   }, {});
   return Audio;
 };

@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.STRING,
     text: DataTypes.TEXT,
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY(DataTypes.INTEGER)
+    churches: { type: DataTypes.ARRAY(DataTypes.INTEGER), defaultValue: [] }
   });
   return Ministry;
 };
