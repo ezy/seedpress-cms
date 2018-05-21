@@ -6,7 +6,7 @@ function saveMinistry(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
-  const status = req.body.status ? req.body.status.trim() : '';
+  const status = req.body.status ? req.body.status.trim() : 'draft';
   const churches = req.body.churches ? req.body.churches : [];
 
   if (!title) {

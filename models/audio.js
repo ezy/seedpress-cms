@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     text: DataTypes.TEXT,
     speaker: DataTypes.STRING,
-    category: DataTypes.STRING,
+    category: { type: DataTypes.STRING, defaultValue: 'news' },
     tags: { type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: [] },
     link: DataTypes.STRING,
     status: DataTypes.STRING,
