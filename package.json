@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Here is the mustard",
   "engines": {
-    "node": "^6.12",
+    "node": "^8.*",
     "npm": "^5.6"
   },
   "main": "index.js",
@@ -20,7 +20,7 @@
   "author": "Ezra Keddell",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "cors": "^2.8.1",

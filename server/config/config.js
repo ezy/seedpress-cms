@@ -5,8 +5,8 @@ const config = {
   port: process.env.PORT || 1337,
   expireTime: '7d',
   secrets: {
-    jwt: process.env.JWT || 'labor_risque_pewter_nisei',
-  },
+    jwt: process.env.JWT || 'labor_risque_pewter_nisei'
+  }
 };
 
 // Setting environment variable
