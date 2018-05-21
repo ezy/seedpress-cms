@@ -5,7 +5,9 @@ const signToken = require('../../auth/auth').signToken;
 function saveMinistry(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
-  const body = req.body.body ? req.body.body.trim() : '';
+  const text = req.body.text ? req.body.text.trim() : '';
+  const status = req.body.status ? req.body.status.trim() : '';
+  const churches = req.body.churches ? req.body.churches : [];
 
   if (!title) {
     return res
@@ -27,7 +29,9 @@ function saveMinistry(req, res) {
       const newMinistry = {
         title,
         image,
-        body
+        text,
+        status,
+        churches
       };
 
       Ministry.create(newMinistry)
@@ -36,7 +40,9 @@ function saveMinistry(req, res) {
             id: data.id,
             title: data.title,
             image: data.image,
-            body: data.body
+            text: data.text,
+            status: data.status,
+            churches: data.churches
           }
         }))
         .catch((err) => res.status(400).send({ error: err.message }));
@@ -55,7 +61,9 @@ function getMinistry(req, res) {
         id: ministry.id,
         title: ministry.title,
         image: ministry.image,
-        body: ministry.body
+        text: ministry.text,
+        status: ministry.status,
+        churches: ministry.churches
       });
     })
     .catch((err) => res.status(400).send({ error: err.message }));
