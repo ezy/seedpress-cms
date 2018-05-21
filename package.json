@@ -11,7 +11,7 @@
     "lint": "eslint server ; exit 0",
     "dropit": "psql -c 'DROP DATABASE IF EXISTS mustard_dev' && psql -c 'CREATE DATABASE mustard_dev'",
     "restart": "yarn dropit && export NODE_ENV=development && node index.js",
-    "start": " export NODE_ENV=development && node index.js",
+    "start": " export NODE_ENV=development && nodemon index.js",
     "pretest": "psql -c 'DROP DATABASE IF EXISTS mustard_test' && psql -c 'CREATE DATABASE mustard_test'",
     "test": "export NODE_ENV=test && node index.js",
     "test:only": "export NODE_ENV=test && ./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",
@@ -40,6 +40,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "morgan": "^1.7.0",
+    "nodemon": "^1.17.4",
     "supertest": "^2.0.1"
   }
 }
