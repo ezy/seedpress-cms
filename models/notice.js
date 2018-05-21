@@ -12,12 +12,11 @@ module.exports = function(sequelize, DataTypes) {
     date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     expires: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     image: DataTypes.STRING,
-    text: DataTypes.STRING,
+    text: DataTypes.TEXT,
     frequency: DataTypes.STRING,
-    tags: DataTypes.ARRAY,
-    updated: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    tags: DataTypes.ARRAY(DataTypes.STRING),
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY
+    churches: DataTypes.ARRAY(DataTypes.INTEGER)
   });
   return Notice;
 };

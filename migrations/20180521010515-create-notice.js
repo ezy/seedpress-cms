@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('Notices', {
@@ -24,13 +23,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       text: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       frequency: {
         type: Sequelize.STRING
       },
       tags: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       updated: {
         allowNull: false,
@@ -40,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       churches: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       createdAt: {
         allowNull: false,
@@ -52,7 +51,7 @@ module.exports = {
       }
     });
   },
-  down: function(queryInterface, Sequelize) {
+  down: function(queryInterface/*, Sequelize*/) {
     return queryInterface.dropTable('Notices');
   }
 };

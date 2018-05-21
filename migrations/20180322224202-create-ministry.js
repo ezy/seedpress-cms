@@ -14,13 +14,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       text: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       status: {
         type: Sequelize.STRING
       },
       churches: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       createdAt: {
         allowNull: false,

@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     image: DataTypes.STRING,
-    text: DataTypes.STRING,
+    text: DataTypes.TEXT,
     speaker: DataTypes.STRING,
     category: DataTypes.STRING,
-    tags: DataTypes.ARRAY,
+    tags: DataTypes.ARRAY(DataTypes.STRING),
     link: DataTypes.STRING,
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY
+    churches: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {});
   return Audio;
 };

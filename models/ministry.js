@@ -9,10 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     title: DataTypes.STRING,
     image: DataTypes.STRING,
-    text: DataTypes.STRING,
-    updated: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    text: DataTypes.TEXT,
     status: DataTypes.STRING,
-    churches: DataTypes.ARRAY
+    churches: DataTypes.ARRAY(DataTypes.INTEGER)
   });
   return Ministry;
 };

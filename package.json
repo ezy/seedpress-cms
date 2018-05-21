@@ -28,8 +28,9 @@
     "express-jwt": "^5.1.0",
     "helmet": "^3.1.0",
     "jsonwebtoken": "^7.1.9",
+    "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.27.0",
+    "sequelize": "^4.37.8",
     "sequelize-cli": "^4.0.0"
   },
   "devDependencies": {

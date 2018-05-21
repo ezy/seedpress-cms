@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       text: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       speaker: {
         type: Sequelize.STRING
@@ -30,13 +30,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       tags: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       status: {
         type: Sequelize.STRING
       },
       churches: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       createdAt: {
         allowNull: false,
@@ -48,7 +48,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: function(queryInterface/*, Sequelize*/) {
     return queryInterface.dropTable('Audios');
   }
 };

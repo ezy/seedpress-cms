@@ -4,20 +4,23 @@
     "password": null,
     "database": "mustard_dev",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "operatorsAliases": false
   },
   "test": {
     "username": "blade",
     "password": null,
     "database": "mustard_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "operatorsAliases": false
   },
   "production": {
     "username": "blade",
     "password": null,
     "database": "mustard_production",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "operatorsAliases": false
   }
 }
