@@ -1,8 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-  const Audio = sequelize.define('Audio', {
+  const Media = sequelize.define('Media', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
       unique: true
@@ -18,5 +18,5 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     churches: { type: DataTypes.ARRAY(DataTypes.INTEGER), defaultValue: [] }
   }, {});
-  return Audio;
+  return Media;
 };

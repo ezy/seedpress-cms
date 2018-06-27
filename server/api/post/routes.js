@@ -2,9 +2,9 @@ const Router = require('express').Router();
 const controller = require('./controller');
 
 Router.route('/')
-  .post(controller.saveNotice);
+  .post(controller.savePost);
 
 Router.route('/:id')
-  .get(controller.getNotice);
+  .get(controller.getPost);
 
 module.exports = Router;

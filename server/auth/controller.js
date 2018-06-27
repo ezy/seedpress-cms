@@ -8,11 +8,11 @@ function signin(req, res) {
   return res.json({
     token,
     user: {
-      email: req.user.email,
-    },
+      email: req.user.email
+    }
   });
 }
 
 module.exports = {
-  signin,
+  signin
 };

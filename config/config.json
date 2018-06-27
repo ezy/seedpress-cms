@@ -2,7 +2,7 @@
   "development": {
     "username": "blade",
     "password": null,
-    "database": "mustard_dev",
+    "database": "newseed_dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
@@ -10,7 +10,7 @@
   "test": {
     "username": "blade",
     "password": null,
-    "database": "mustard_test",
+    "database": "newseed_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false
@@ -18,7 +18,7 @@
   "production": {
     "username": "blade",
     "password": null,
-    "database": "mustard_production",
+    "database": "newseed_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": false

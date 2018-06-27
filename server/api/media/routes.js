@@ -2,9 +2,9 @@ const Router = require('express').Router();
 const controller = require('./controller');
 
 Router.route('/')
-  .post(controller.saveAudio);
+  .post(controller.saveMedia);
 
 Router.route('/:id')
-  .get(controller.getAudio);
+  .get(controller.getMedia);
 
 module.exports = Router;

@@ -1,7 +1,7 @@
 {
-  "name": "mustard-api",
+  "name": "newseed-api",
   "version": "0.1.0",
-  "description": "Here is the mustard",
+  "description": "Here is the new seed",
   "engines": {
     "node": "^8.*",
     "npm": "^5.6"
@@ -9,10 +9,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server ; exit 0",
-    "dropit": "psql -c 'DROP DATABASE IF EXISTS mustard_dev' && psql -c 'CREATE DATABASE mustard_dev'",
+    "dropit": "psql -c 'DROP DATABASE IF EXISTS newseed_dev' && psql -c 'CREATE DATABASE newseed_dev'",
     "restart": "yarn dropit && export NODE_ENV=development && node index.js",
     "start": " export NODE_ENV=development && nodemon index.js",
-    "pretest": "psql -c 'DROP DATABASE IF EXISTS mustard_test' && psql -c 'CREATE DATABASE mustard_test'",
+    "pretest": "psql -c 'DROP DATABASE IF EXISTS newseed_test' && psql -c 'CREATE DATABASE newseed_test'",
     "test": "export NODE_ENV=test && node index.js",
     "test:only": "export NODE_ENV=test && ./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",
     "coverage": "istanbul cover _mocha -- -R spec 'test/**/**/**/**test.js'"

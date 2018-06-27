@@ -1,7 +1,7 @@
-### Mustard API
+### Newseed API
 
 This is the express server that will ultimately be hosted on the EC2 instance for
-the production version of Mustard.
+the production version of Newseed.
 
 * [Node.js](https://nodejs.org/en/)
 * [PostgreSQL](https://www.postgresql.org/)
@@ -35,7 +35,7 @@ Make sure to install and run PostgreSQL first.
 ```
 brew update
 brew install postgres
-createdb mustard-dev
+createdb newseed_dev
 ```
 
 ### To run test

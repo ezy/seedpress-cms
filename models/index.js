@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(`${__dirname}/../config/config.json`)[env];
-const db = {};
-
+let fs = require('fs');
+let path = require('path');
+let Sequelize = require('sequelize');
+let basename = path.basename(__filename);
+let env = process.env.NODE_ENV || 'development';
+let config = require(`${__dirname }/../config/config.json`)[env];
+let db = {};
 let sequelize;
 
 if (config.use_env_variable) {
@@ -16,9 +15,11 @@ if (config.use_env_variable) {
 
 fs
   .readdirSync(__dirname)
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+  .filter((file) => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
+    let model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 

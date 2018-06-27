@@ -1,15 +1,15 @@
-const Notice = require('../../../models').Notice;
+const Media = require('../../../models').Media;
 const signToken = require('../../auth/auth').signToken;
 
-// Register new notice
-function saveNotice(req, res) {
+// Register new media
+function saveMedia(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
-  const category = req.body.category ? req.body.category.trim() : '';
+  const speaker = req.body.speaker ? req.body.speaker.trim() : '';
   const date = req.body.date ? req.body.date : new Date();
-  const expires = req.body.expires ? req.body.expires.trim() : '';
-  const frequency = req.body.frequency ? req.body.frequency.trim() : '';
+  const category = req.body.category ? req.body.category.trim() : '';
+  const link = req.body.link ? req.body.link.trim() : '';
   const tags = req.body.tags ? req.body.tags : [];
   const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
@@ -24,45 +24,45 @@ function saveNotice(req, res) {
   }
 
   // Check if title already exists
-  Notice.findAll({
+  Media.findAll({
       where: {
         title
       }
     })
-    .then((notice) => {
-      if (notice.length > 0) {
+    .then((media) => {
+      if (media.length > 0) {
         return res
           .status(400)
           .send({
-            error: 'The notice has already been created'
+            error: 'The media has already been created'
           });
       }
 
-      const newNotice = {
+      const newMedia = {
         title,
         image,
         text,
-        category,
+        speaker,
         date,
-        expires,
-        frequency,
+        category,
+        link,
         tags,
         updated,
         status,
         churches
       };
 
-      Notice.create(newNotice)
+      Media.create(newMedia)
         .then((data) => res.json({
-          notice: {
+          media: {
             id: data.id,
             title: data.title,
+            date: data.date,
             image: data.image,
             text: data.text,
+            speaker: data.speaker,
             category: data.category,
-            date: data.date,
-            expires: data.expires,
-            frequency: data.frequency,
+            link: data.link,
             tags: data.tags,
             updated: data.updated,
             status: data.status,
@@ -78,28 +78,28 @@ function saveNotice(req, res) {
     }));
 }
 
-// Get one notice
-function getNotice(req, res) {
-  Notice.findById(req.params.id)
-    .then((notice) => {
-      if (!notice || notice.title.length <= 0) {
+// Get one media
+function getMedia(req, res) {
+  Media.findById(req.params.id)
+    .then((media) => {
+      if (!media || media.title.length <= 0) {
         return res.status(400).send({
-          error: 'No notice found'
+          error: 'No media found'
         });
       }
       return res.json({
-        id: notice.id,
-        title: notice.title,
-        image: notice.image,
-        text: notice.text,
-        category: notice.category,
-        date: notice.date,
-        expires: notice.expires,
-        frequency: notice.frequency,
-        tags: notice.tags,
-        updated: notice.updated,
-        status: notice.status,
-        churches: notice.churches
+        id: media.id,
+        title: media.title,
+        image: media.image,
+        text: media.text,
+        speaker: media.speaker,
+        date: media.date,
+        category: media.category,
+        link: media.link,
+        tags: media.tags,
+        updated: media.updated,
+        status: media.status,
+        churches: media.churches
       });
     })
     .catch((err) => res.status(400).send({
@@ -108,6 +108,6 @@ function getNotice(req, res) {
 }
 
 module.exports = {
-  saveNotice,
-  getNotice
+  saveMedia,
+  getMedia
 };
