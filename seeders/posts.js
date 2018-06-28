@@ -10,7 +10,7 @@ for (let i = 0; i < 6; i++) {
     date: new Date(),
     expiry: faker.date.future(),
     status: 'published',
-    text: faker.lorem.slug(10),
+    text: faker.lorem.text(),
     createdAt: new Date(),
     updatedAt: new Date()
   };
