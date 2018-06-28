@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server ; exit 0",
-    "dropit": "dropdb newseed_dev &&  createdb newseed_dev",
+    "dropit": "dropdb newseed_dev && createdb newseed_dev",
     "restart": "yarn dropit && export NODE_ENV=development && node index.js",
     "start": " export NODE_ENV=development && nodemon index.js",
     "startdb": "pg_ctl -D /usr/local/var/postgresql start",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "faker": "^4.1.0",
     "eslint": "^3.11.1",
     "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.5",
