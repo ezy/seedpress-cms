@@ -17,7 +17,15 @@ for (let i = 0; i < 6; i++) {
 
 module.exports = {
   up: (queryInterface) => {
-    return queryInterface.bulkInsert('Users', usersList, {});
+    return queryInterface.bulkInsert('Users', usersList.concat([{
+      id: faker.random.uuid(),
+      firstName: 'Ezra',
+      lastName: 'Keddell',
+      email: 'ezrakeddell@gmail.com',
+      password: 'passwrod',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }]), {});
   },
 
   down: (queryInterface) => {

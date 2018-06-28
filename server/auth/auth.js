@@ -66,28 +66,24 @@ function verifyUser() {
 
     // look user up in the DB so we can check
     // if the passwords match for the email
-    User.findAll({
+    User.findOne({
         where: {
           email
         }
       })
       .then((user) => {
-        if (!user[0]) {
+        if (!user.dataValues.email) {
           return res.status(401).send({
             error: 'Incorrect email or password'
           });
         }
         // checking the passowords
-        if (!bcrypt.compareSync(password, user[0].password)) {
+        if (!bcrypt.compareSync(password, user.dataValues.password)) {
           return res.status(401).send({
             error: 'Incorrect Email or Password'
           });
         }
-        // if everything is good,
-        // then attach to req.user
-        // and call next so the controller
-        // can sign a token from the req.user._id
-        req.user = user[0];
+        req.user = user.dataValues;
         return next();
       })
       .catch((err) => next(err));

@@ -9,8 +9,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server ; exit 0",
-    "dropit": "dropdb newseed_dev && createdb newseed_dev",
-    "restart": "yarn dropit && export NODE_ENV=development && node index.js",
+    "dropit": "psql -c 'DROP DATABASE IF EXISTS newseed_dev' && psql -c 'CREATE DATABASE newseed_dev'",
+    "reset": "yarn dropit && sequelize db:migrate && sequelize db:seed:all && export NODE_ENV=development && node index.js",
     "start": " export NODE_ENV=development && nodemon index.js",
     "startdb": "pg_ctl -D /usr/local/var/postgresql start",
     "stopdb": "pg_ctl -D /usr/local/var/postgresql stop",

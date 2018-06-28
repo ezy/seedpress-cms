@@ -18,11 +18,11 @@ for (let i = 0; i < 6; i++) {
 }
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface) => {
     return queryInterface.bulkInsert('Posts', postsList, {});
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface) => {
     return queryInterface.bulkDelete('Posts', null, {});
   }
 };
