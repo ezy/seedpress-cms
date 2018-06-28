@@ -15,8 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     category: { type: DataTypes.STRING, defaultValue: 'news' },
     tags: { type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: [] },
     link: DataTypes.STRING,
-    status: DataTypes.STRING,
-    churches: { type: DataTypes.ARRAY(DataTypes.INTEGER), defaultValue: [] }
+    status: DataTypes.STRING
   }, {});
   return Media;
 };

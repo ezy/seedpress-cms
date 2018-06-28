@@ -1,5 +1,5 @@
 const Post = require('../../../models').Post;
-const signToken = require('../../auth/auth').signToken;
+// const signToken = require('../../auth/auth').signToken;
 
 // Register new post
 function savePost(req, res) {
@@ -13,7 +13,6 @@ function savePost(req, res) {
   const tags = req.body.tags ? req.body.tags : [];
   const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
-  const churches = req.body.churches ? req.body.churches : [];
 
   if (!title) {
     return res
@@ -48,8 +47,7 @@ function savePost(req, res) {
         frequency,
         tags,
         updated,
-        status,
-        churches
+        status
       };
 
       Post.create(newPost)
@@ -65,8 +63,7 @@ function savePost(req, res) {
             frequency: data.frequency,
             tags: data.tags,
             updated: data.updated,
-            status: data.status,
-            churches: data.churches
+            status: data.status
           }
         }))
         .catch((err) => res.status(400).send({
@@ -98,8 +95,7 @@ function getPost(req, res) {
         frequency: post.frequency,
         tags: post.tags,
         updated: post.updated,
-        status: post.status,
-        churches: post.churches
+        status: post.status
       });
     })
     .catch((err) => res.status(400).send({

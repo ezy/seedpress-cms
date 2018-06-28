@@ -13,7 +13,6 @@ function saveMedia(req, res) {
   const tags = req.body.tags ? req.body.tags : [];
   const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
-  const churches = req.body.churches ? req.body.churches : [];
 
   if (!title) {
     return res
@@ -48,8 +47,7 @@ function saveMedia(req, res) {
         link,
         tags,
         updated,
-        status,
-        churches
+        status
       };
 
       Media.create(newMedia)
@@ -65,8 +63,7 @@ function saveMedia(req, res) {
             link: data.link,
             tags: data.tags,
             updated: data.updated,
-            status: data.status,
-            churches: data.churches
+            status: data.status
           }
         }))
         .catch((err) => res.status(400).send({
@@ -98,8 +95,7 @@ function getMedia(req, res) {
         link: media.link,
         tags: media.tags,
         updated: media.updated,
-        status: media.status,
-        churches: media.churches
+        status: media.status
       });
     })
     .catch((err) => res.status(400).send({
