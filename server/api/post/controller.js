@@ -75,6 +75,17 @@ function savePost(req, res) {
     }));
 }
 
+// Get all posts
+function getAllPosts(req, res) {
+  Post.findAll()
+    .then((posts) => {
+      return res.json(posts);
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
 // Get one post
 function getPost(req, res) {
   Post.findById(req.params.id)
@@ -105,5 +116,6 @@ function getPost(req, res) {
 
 module.exports = {
   savePost,
+  getAllPosts,
   getPost
 };

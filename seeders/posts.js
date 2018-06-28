@@ -5,12 +5,12 @@ let postsList = [];
 for (let i = 0; i < 6; i++) {
   const userObj = {
     id: faker.random.uuid(),
-    title: faker.lorem.words(5),
+    title: faker.lorem.sentence(5),
     category: 'news',
     date: new Date(),
     expiry: faker.date.future(),
     status: 'published',
-    text: faker.lorem.sentence(),
+    text: faker.lorem.slug(10),
     createdAt: new Date(),
     updatedAt: new Date()
   };

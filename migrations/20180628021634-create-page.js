@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       slide: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       status: {
         type: Sequelize.STRING
