@@ -1,5 +1,4 @@
 const Media = require('../../../models').Media;
-const signToken = require('../../auth/auth').signToken;
 
 // Register new media
 function saveMedia(req, res) {

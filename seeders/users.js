@@ -1,4 +1,5 @@
 const faker = require('faker');
+const bcrypt = require('bcrypt');
 
 let usersList = [];
 
@@ -8,7 +9,7 @@ for (let i = 0; i < 6; i++) {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    password: 'passwrod',
+    password: bcrypt.hashSync('passwrod', 10),
     createdAt: new Date(),
     updatedAt: new Date()
   };
@@ -22,7 +23,7 @@ module.exports = {
       firstName: 'Ezra',
       lastName: 'Keddell',
       email: 'ezrakeddell@gmail.com',
-      password: 'passwrod',
+      password: bcrypt.hashSync('passwrod', 10),
       createdAt: new Date(),
       updatedAt: new Date()
     }]), {});

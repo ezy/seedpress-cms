@@ -1,10 +1,8 @@
 const bcrypt = require('bcrypt');
 
 const User = require('../../../models').User;
-const signToken = require('../../auth/auth').signToken;
 const validatePassword = require('../../utils/helpers').validatePassword;
 const validateEmail = require('../../utils/helpers').validateEmail;
-const generatePassword = require('../../utils/helpers').generatePassword;
 
 // Register new user
 function saveUser(req, res) {

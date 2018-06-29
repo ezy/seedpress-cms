@@ -5,6 +5,7 @@ const api = require('./api/api');
 const auth = require('./auth/routes');
 
 // Middlewares setup
+require('./auth/passport');
 require('./config/middlewares')(app);
 
 // Routes

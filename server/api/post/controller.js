@@ -1,5 +1,4 @@
 const Post = require('../../../models').Post;
-// const signToken = require('../../auth/auth').signToken;
 
 // Register new post
 function savePost(req, res) {

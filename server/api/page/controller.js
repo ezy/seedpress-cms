@@ -1,5 +1,4 @@
 const Page = require('../../../models').Page;
-// const signToken = require('../../auth/auth').signToken;
 
 // Register new page
 function savePage(req, res) {
