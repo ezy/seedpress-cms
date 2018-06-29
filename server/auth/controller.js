@@ -6,8 +6,7 @@ function verifyUser(req, res /*, next*/) {
   passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err || !user) {
       return res.status(400).json({
-        message: info.message,
-        user: user
+        message: info.message
       });
     }
     req.login(user, { session: false }, (error) => {
@@ -22,7 +21,8 @@ function verifyUser(req, res /*, next*/) {
           'lastName': user.lastName,
           'email': user.email
         },
-        token: `JWT${token}`
+        message: info.message,
+        token
       });
     });
   })(req, res);

@@ -15,6 +15,7 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   (email, password, cb) => {
+    // Sequelize will find the user with raw data returned
     User.findOne({ where: { email }, raw: true })
       .then((user) => {
         if (!user) {
@@ -22,6 +23,7 @@ passport.use(new LocalStrategy({
             message: 'Incorrect email or password.'
           });
         }
+        // Don't forget bcrypt as passwords are encrypted
         if (!bcrypt.compareSync(password, user.password)) {
           return cb(null, false, {
             message: 'Incorrect email or password.'
@@ -40,8 +42,8 @@ passport.use(new JWTStrategy({
     secretOrKey: config.secrets.jwt
   },
   (jwtPayload, cb) => {
-    //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-    return User.findById(jwtPayload.id)
+    // Use the JWT token to find the user in the db if required
+    return User.findOne({ where: { email: jwtPayload.email }, raw: true })
       .then((user) => {
         return cb(null, user);
       })
