@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const api = require('./api/api');
 const auth = require('./auth/routes');
-const passport = require('passport');
 
 // Middlewares setup
 require('./auth/passport');

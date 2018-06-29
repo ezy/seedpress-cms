@@ -14,8 +14,12 @@ function verifyUser(req, res /*, next*/) {
         res.send(error);
       }
       // generate a signed son web token with the contents of user object and return it in the response
-      const token = jwt.sign(user, config.secrets.jwt);
-      return res.json({
+      const token = jwt.sign(user, config.secrets.jwt, { expiresIn: 86400 * 30 });
+      // Use to ensure token is valid and debug non-working bearer
+      // jwt.verify(token, config.secrets.jwt, (errs, data) => {
+      //   console.log(errs, data);
+      // });
+      res.json({
         user: {
           'firstName': user.firstName,
           'lastName': user.lastName,
