@@ -1,13 +1,13 @@
-const Router = require('express').Router();
+const router = require('express').Router();
 const controller = require('./controller');
 
-Router.route('/')
+router.route('/')
   .get(controller.getAllPosts);
 
-Router.route('/create')
+router.route('/create')
   .post(controller.savePost);
 
-Router.route('/:id')
+router.route('/:id')
   .get(controller.getPost);
 
-module.exports = Router;
+module.exports = router;

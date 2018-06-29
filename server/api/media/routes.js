@@ -1,10 +1,10 @@
-const Router = require('express').Router();
+const router = require('express').Router();
 const controller = require('./controller');
 
-Router.route('/')
+router.route('/')
   .post(controller.saveMedia);
 
-Router.route('/:id')
+router.route('/:id')
   .get(controller.getMedia);
 
-module.exports = Router;
+module.exports = router;

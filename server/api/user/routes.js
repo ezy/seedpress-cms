@@ -1,10 +1,11 @@
-const Router = require('express').Router();
+const router = require('express').Router();
 const controller = require('./controller');
+const passport = require('passport');
 
-Router.route('/')
+router.route('/')
   .post(controller.saveUser);
 
-Router.route(':id')
-  .get(controller.getUser);
+router.route('/:id')
+  .get(passport.authenticate('jwt', { session: false }), controller.getUser);
 
-module.exports = Router;
+module.exports = router;

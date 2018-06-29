@@ -1,7 +1,7 @@
-const Router = require('express').Router();
+const router = require('express').Router();
 const controller = require('./controller');
 
-Router.route('/login')
+router.route('/login')
   .post(controller.verifyUser);
 
-module.exports = Router;
+module.exports = router;

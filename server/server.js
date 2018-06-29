@@ -11,7 +11,7 @@ require('./config/middlewares')(app);
 
 // Routes
 app.use('/api', api);
-app.use('/auth', passport.authenticate('jwt', { session: false }), auth);
+app.use('/auth', auth);
 
 app.use((err, req, res, next) => {
   // if error thrown from jwt validation check

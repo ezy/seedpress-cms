@@ -66,7 +66,7 @@ function getUser(req, res) {
   User.findById(req.params.id)
     .then((user) => {
       if (!user || user.email.length <= 0) {
-        return res.status(400).send({ error: 'No user found' });
+        return res.status(400).send({ error: 'No such user.' });
       }
       return res.json({
         id: user.id,

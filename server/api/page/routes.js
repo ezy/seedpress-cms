@@ -1,10 +1,10 @@
-const Router = require('express').Router();
+const router = require('express').Router();
 const controller = require('./controller');
 
-Router.route('/')
+router.route('/')
   .page(controller.savePage);
 
-Router.route('/:id')
+router.route('/:id')
   .get(controller.getPage);
 
-module.exports = Router;
+module.exports = router;
