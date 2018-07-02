@@ -10,10 +10,10 @@
   "scripts": {
     "lint": "eslint server ; exit 0",
     "dropit": "psql -c 'DROP DATABASE IF EXISTS newseed_dev' && psql -c 'CREATE DATABASE newseed_dev'",
-    "reset": "yarn dropit && sequelize db:migrate && sequelize db:seed:all && export NODE_ENV=development && node index.js",
+    "reset": "yarn dropit && sequelize db:migrate && sequelize db:seed:all",
     "start": " export NODE_ENV=development && nodemon index.js",
-    "startdb": "pg_ctl -D /usr/local/bin/postgres start",
-    "stopdb": "pg_ctl -D /usr/local/bin/postgres stop",
+    "startdb": "pg_ctl -D /usr/local/var/postgres start",
+    "stopdb": "pg_ctl -D /usr/local/var/postgres stop",
     "pretest": "psql -c 'DROP DATABASE IF EXISTS newseed_test' && psql -c 'CREATE DATABASE newseed_test'",
     "test": "export NODE_ENV=test && node index.js",
     "test:only": "export NODE_ENV=test && ./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",

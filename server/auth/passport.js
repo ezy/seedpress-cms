@@ -10,13 +10,13 @@ const ExtractJWT = passportJWT.ExtractJwt;
 
 const bcrypt = require('bcrypt');
 
-passport.use(new LocalStrategy({
+passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
   (email, password, cb) => {
     // Sequelize will find the user with raw data returned
-    User.findOne({ where: { email }, raw: true })
+    User.findOne({where: {email},raw: true})
       .then((user) => {
         if (!user) {
           return cb(null, false, {
@@ -30,12 +30,47 @@ passport.use(new LocalStrategy({
           });
         }
         return cb(null, user, {
-          message: 'Logged In Successfully'
+          message: 'Logged in successfully'
         });
       })
       .catch((err) => cb(err));
   }
 ));
+
+passport.use('local-register', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password'
+}, (email, password, cb) => {
+  // Sequelize will find the user with raw data returned
+  User.findOne({where: {email},raw: true})
+    .then((user) => {
+      if (user) {
+        return cb(null, false, {
+          message: 'The email is already registered.'
+        });
+      }
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(password, salt);
+
+      const userObj = {
+        email,
+        password: hash
+      };
+
+      User.create(userObj)
+        .then((newUser) => {
+          const dataObj = newUser.get({plain:true});
+          return cb(null, dataObj, {
+            message: 'User created successfully.'
+          });
+        })
+        .catch((err) => {
+          return cb(err);
+        });
+    })
+    .catch((err) => cb(err));
+
+}));
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('Bearer'),
@@ -43,7 +78,7 @@ passport.use(new JWTStrategy({
   },
   (jwtPayload, cb) => {
     // Use the JWT token to find the user in the db if required
-    return User.findOne({ where: { email: jwtPayload.email }, raw: true })
+    User.findOne({where: {email: jwtPayload.email},raw: true})
       .then((user) => {
         return cb(null, user);
       })
