@@ -62,6 +62,17 @@ function savePage(req, res) {
     }));
 }
 
+// Get all posts
+function getAllPages(req, res) {
+  Page.findAll()
+    .then((pages) => {
+      return res.json(pages);
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
 // Get one page
 function getPage(req, res) {
   Page.findById(req.params.id)
@@ -88,5 +99,6 @@ function getPage(req, res) {
 
 module.exports = {
   savePage,
+  getAllPages,
   getPage
 };

@@ -74,6 +74,17 @@ function saveMedia(req, res) {
     }));
 }
 
+// Get all posts
+function getAllMedia(req, res) {
+  Media.findAll()
+    .then((media) => {
+      return res.json(media);
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
 // Get one media
 function getMedia(req, res) {
   Media.findById(req.params.id)
@@ -104,5 +115,6 @@ function getMedia(req, res) {
 
 module.exports = {
   saveMedia,
+  getAllMedia,
   getMedia
 };

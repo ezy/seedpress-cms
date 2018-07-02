@@ -1,3 +1,5 @@
+const date = new Date();
+
 module.exports = (sequelize, DataTypes) => {
   let Post = sequelize.define('Post', {
     id: {
@@ -7,10 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
-    title: DataTypes.STRING,
-    category: DataTypes.STRING,
-    date: DataTypes.DATE,
+    title: { type:DataTypes.STRING, allowNull: false },
+    category: { type:DataTypes.STRING, defaultValue: 'news', allowNull: false },
+    date: { type: DataTypes.DATE, defaultValue: date, allowNull: false },
     expiry: DataTypes.DATE,
+    frequency: DataTypes.STRING,
     status: DataTypes.STRING,
     text: DataTypes.TEXT
   }, {});

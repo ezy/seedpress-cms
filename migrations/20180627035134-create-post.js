@@ -13,6 +13,9 @@ module.exports = {
       category: {
         type: Sequelize.STRING
       },
+      frequency: {
+        type: Sequelize.STRING
+      },
       date: {
         type: Sequelize.DATE
       },

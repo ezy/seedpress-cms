@@ -5,7 +5,7 @@ function savePost(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
-  const category = req.body.category ? req.body.category.trim() : '';
+  const category = req.body.category ? req.body.category.trim() : 'news';
   const date = req.body.date ? req.body.date : new Date();
   const expires = req.body.expires ? req.body.expires.trim() : '';
   const frequency = req.body.frequency ? req.body.frequency.trim() : '';
@@ -16,9 +16,7 @@ function savePost(req, res) {
   if (!title) {
     return res
       .status(422)
-      .send({
-        error: 'A title is required.'
-      });
+      .send({error: 'A title is required.'});
   }
 
   // Check if title already exists
