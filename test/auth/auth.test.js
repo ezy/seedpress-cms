@@ -1,31 +1,32 @@
+/* eslint-disable */
+
 const app = require('../../server/server');
 const request = require('supertest');
 const expect = require('chai').expect;
+const faker = require('faker');
 
 describe('[Authentication] /auth Testing', () => {
   it('should be able to sign in with correct credentials', (done) => {
     request(app)
-      .post('/api/users')
+      .post('/auth/register')
       .send({
-        email: 'alizona@cc.cc',
-        password: 'Pass123!'
+        email: 'ezrakeddell@gmail.com',
+        password: 'passwrod'
       })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201)
-      .end((err1, res) => {
-        // console.log('==========\n', res.body)
+      .end((err, res) => {
         request(app)
           .post('/auth/signin')
           .send({
-            email: 'alizona@cc.cc',
-            password: 'Pass123!'
+            email: 'ezrakeddell@gmail.com',
+            password: 'passwrod'
           })
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err2, resp) => {
-            // console.log('==========\n', resp.body)
             expect(resp.body).to.be.an('object');
             done();
           });
@@ -34,9 +35,9 @@ describe('[Authentication] /auth Testing', () => {
 
   it('should not be able to sign in if credentials are incorrect', (done) => {
     request(app)
-      .post('/auth/signin')
+      .post('/auth/login')
       .send({
-        email: 'alice@cc.cc',
+        email: 'ezrakeddell@gmail.com',
         password:'BadPass123!'
       })
       .set('Accept', 'application/json')
@@ -45,7 +46,62 @@ describe('[Authentication] /auth Testing', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('error');
-        expect(res.body).to.have.deep.property('error', 'Incorrect credentials');
+        expect(res.body).to.have.deep.property('error', 'Incorrect email or password.');
+        done();
+      });
+  });
+
+  it('should be able to sign up a new user', (done) => {
+    const email = faker.internet.email();
+    request(app)
+      .post('/auth/register/')
+      .send({
+        email: email,
+        password:'Pass123!'
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('token');
+        expect(res.body).to.have.deep.property('user.email', email);
+        done();
+      });
+  });
+
+  it('should not be able to sign up if any inputs are empty', (done) => {
+    request(app)
+      .post('/auth/register/')
+      .send({
+        email: null,
+        password: null
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error');
+        expect(res.body).to.have.deep.property('error', 'Email, and password are required.');
+        done();
+      });
+  });
+
+  it('should not be able to sign up a user with same email', (done) => {
+    request(app)
+      .post('/auth/register/')
+      .send({
+        email: 'ezrakeddell@gmail.com',
+        password: 'Pass123!'
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('error');
+        expect(res.body).to.have.deep.property('error', 'The email is already registered.');
         done();
       });
   });

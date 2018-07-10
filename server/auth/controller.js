@@ -6,9 +6,14 @@ const validateEmail = require('../utils/helpers.js').validateEmail;
 const validatePassword = require('../utils/helpers.js').validatePassword;
 
 function signToken(req, res, err, user, info) {
-  if (err || !user) {
+  if (err) {
     return res.status(400).json({
-      message: info.message
+      error: info.message
+    });
+  }
+  if (!user) {
+    return res.status(401).json({
+      error: info.message
     });
   }
   req.login(user, { session: false }, (error) => {

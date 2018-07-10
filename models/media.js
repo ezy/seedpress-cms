@@ -13,9 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     text: DataTypes.TEXT,
     speaker: DataTypes.STRING,
     category: { type: DataTypes.STRING, defaultValue: 'news' },
-    tags: { type: DataTypes.ARRAY(DataTypes.STRING), defaultValue: [] },
     link: DataTypes.STRING,
     status: DataTypes.STRING
   }, {});
+  Media.associate = function(models) {
+    Media.hasMany(models.Tag);
+  };
   return Media;
 };

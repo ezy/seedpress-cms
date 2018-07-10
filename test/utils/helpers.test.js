@@ -31,30 +31,6 @@ describe('[Helpers] Unit Test - validatePassword', () => {
     expect(error[0]).to.equal('* Must be longer than 7 chars');
   });
 
-  it('returns error if missing a symbol', () => {
-    const error = helpers.validatePassword('fd4fdfdffD');
-    expect(error[0]).to.equal('* Missing a symbol(! @ # $ % ^ & *)');
-  });
-
-  it('returns error if missing a number', () => {
-    const error = helpers.validatePassword('fd!!dfdffD');
-    expect(error[0]).to.equal('* Missing a number');
-  });
-
-  it('returns error if missing a lowercase', () => {
-    const error = helpers.validatePassword('D^&!DSDSDD123');
-    expect(error[0]).to.equal('* Missing a lowercase letter');
-  });
-
-  it('returns error if missing a uppercase', () => {
-    const error = helpers.validatePassword('!(*&*^7dfsdfsf)');
-    expect(error[0]).to.equal('* Missing an uppercase letter');
-  });
-
-  it('returns no error if it is in correct format', () => {
-    const error = helpers.validatePassword('Correct123!');
-    expect(error).to.have.lengthOf(0);
-  });
 });
 
 describe('[Helpers] Unit Test - validateEmail', () => {

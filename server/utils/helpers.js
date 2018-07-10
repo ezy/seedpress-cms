@@ -21,10 +21,10 @@ function validatePassword(password) {
     errorMessages.push('* Must be fewer than 50 chars');
   }
 
-  // if (password.length < 8) {
-  //   errorMessages.push('* Must be longer than 7 chars');
-  // }
-  //
+  if (password.length < 8) {
+    errorMessages.push('* Must be longer than 7 chars');
+  }
+
   // if (!password.match(/[!@#$%^&*]/g)) {
   //   errorMessages.push('* Missing a symbol(! @ # $ % ^ & *)');
   // }
