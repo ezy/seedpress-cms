@@ -20,11 +20,7 @@ function savePost(req, res) {
   }
 
   // Check if title already exists
-  Post.findAll({
-      where: {
-        title
-      }
-    })
+  Post.findAll({where: {title}})
     .then((post) => {
       if (post.length > 0) {
         return res
@@ -34,34 +30,11 @@ function savePost(req, res) {
           });
       }
 
-      const newPost = {
-        title,
-        image,
-        text,
-        category,
-        date,
-        expires,
-        frequency,
-        tags,
-        updated,
-        status
-      };
+      const newPost = { title,image,text,category,date,expires,frequency,tags,updated,status };
 
       Post.create(newPost)
         .then((data) => res.json({
-          post: {
-            id: data.id,
-            title: data.title,
-            image: data.image,
-            text: data.text,
-            category: data.category,
-            date: data.date,
-            expires: data.expires,
-            frequency: data.frequency,
-            tags: data.tags,
-            updated: data.updated,
-            status: data.status
-          }
+          data
         }))
         .catch((err) => res.status(400).send({
           error: err.message
@@ -92,19 +65,7 @@ function getPost(req, res) {
           error: 'No post found'
         });
       }
-      return res.json({
-        id: post.id,
-        title: post.title,
-        image: post.image,
-        text: post.text,
-        category: post.category,
-        date: post.date,
-        expires: post.expires,
-        frequency: post.frequency,
-        tags: post.tags,
-        updated: post.updated,
-        status: post.status
-      });
+      return res.json(post);
     })
     .catch((err) => res.status(400).send({
       error: err.message

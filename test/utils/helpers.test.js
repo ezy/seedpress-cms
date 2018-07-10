@@ -1,5 +1,4 @@
 const expect = require('chai').expect;
-
 const helpers = require('../../server/utils/helpers');
 
 describe('[Helpers] Unit Test - validateStringLength', () => {

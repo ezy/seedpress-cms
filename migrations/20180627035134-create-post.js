@@ -10,6 +10,9 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      image: {
+        type: Sequelize.STRING
+      },
       category: {
         type: Sequelize.STRING
       },

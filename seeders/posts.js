@@ -6,10 +6,11 @@ for (let i = 0; i < 6; i++) {
   const userObj = {
     id: faker.random.uuid(),
     title: faker.lorem.sentence(5),
-    category: 'news',
+    image: faker.image.imageUrl(),
+    category: faker.random.arrayElement(['news','event','need']),
     date: new Date(),
     expiry: faker.date.future(),
-    status: 'published',
+    status: faker.random.arrayElement(['published','draft']),
     text: faker.lorem.text(),
     createdAt: new Date(),
     updatedAt: new Date()
