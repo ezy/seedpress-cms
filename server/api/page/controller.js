@@ -43,15 +43,7 @@ function savePage(req, res) {
 
       Page.create(newPage)
         .then((data) => res.json({
-          page: {
-            id: data.id,
-            title: data.title,
-            image: data.image,
-            text: data.text,
-            slide: data.slide,
-            updated: data.updated,
-            status: data.status
-          }
+          data
         }))
         .catch((err) => res.status(400).send({
           error: err.message
@@ -82,15 +74,7 @@ function getPage(req, res) {
           error: 'No page found'
         });
       }
-      return res.json({
-        id: page.id,
-        title: page.title,
-        image: page.image,
-        text: page.text,
-        slide: page.slide,
-        updated: page.updated,
-        status: page.status
-      });
+      return res.json(page);
     })
     .catch((err) => res.status(400).send({
       error: err.message
