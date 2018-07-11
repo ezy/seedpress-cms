@@ -9,8 +9,8 @@ describe('[USER] /api/users Testing', () => {
     request(app)
       .post('/api/users')
       .expect(201)
-      .end((err, resp) => {
-        expect(resp.body).to.be.an('object');
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
         done();
       });
   });

@@ -12,12 +12,12 @@ describe('[PAGE] /api/pages Testing', () => {
     request(app)
       .get('/api/pages')
       .expect(200)
-      .end((err, resp) => {
-        expect(resp.body.pages).to.be.an('array');
-        expect(resp.body.pages[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
-        assert.equal((resp.body.pages).length, 6);
+      .end((err, res) => {
+        expect(res.body.pages).to.be.an('array');
+        expect(res.body.pages[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+        assert.equal((res.body.pages).length, 6);
         // set page id for next test
-        pageID = resp.body.pages[0].id;
+        pageID = res.body.pages[0].id;
         done();
       });
   });
@@ -26,9 +26,9 @@ describe('[PAGE] /api/pages Testing', () => {
     request(app)
       .get(`/api/pages/${pageID}`)
       .expect(200)
-      .end((err, resp) => {
-        expect(resp.body.page).to.be.an('object');
-        expect(resp.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+      .end((err, res) => {
+        expect(res.body.page).to.be.an('object');
+        expect(res.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
         done();
       });
   });
@@ -44,6 +44,7 @@ describe('[PAGE] /api/pages Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
+        console.log(res.body);
         let token = res.body.token;
         request(app)
           .post(`/api/pages`)
@@ -51,7 +52,7 @@ describe('[PAGE] /api/pages Testing', () => {
             title: faker.lorem.sentence(5),
             image: faker.image.imageUrl(),
             status: faker.random.arrayElement(['published','draft']),
-            slide: faker.random.arrayElement([0,1]),
+            slide: faker.random.arrayElement(['0','1']),
             text: faker.lorem.text()
           })
           .set('Authorization', `Bearer ${token}`)
@@ -59,8 +60,9 @@ describe('[PAGE] /api/pages Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            expect(resp.body.page).to.be.an('object');
-            expect(resp.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+            console.log(res.body);
+            expect(res.body.page).to.be.an('object');
+            expect(res.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
             done();
           });
       });

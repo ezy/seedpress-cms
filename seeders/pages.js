@@ -8,7 +8,7 @@ for (let i = 0; i < 6; i++) {
     title: faker.lorem.sentence(5),
     image: faker.image.imageUrl(),
     status: faker.random.arrayElement(['published','draft']),
-    slide: faker.random.arrayElement([0,1]),
+    slide: faker.random.arrayElement(['0','1']),
     text: faker.lorem.text(),
     createdAt: new Date(),
     updatedAt: new Date()

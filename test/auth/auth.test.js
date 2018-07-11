@@ -26,8 +26,8 @@ describe('[Authentication] /auth Testing', () => {
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(200)
-          .end((err2, resp) => {
-            expect(resp.body).to.be.an('object');
+          .end((err2, res) => {
+            expect(res.body).to.be.an('object');
             done();
           });
       });

@@ -18,11 +18,7 @@ function savePage(req, res) {
   }
 
   // Check if title already exists
-  Page.findAll({
-      where: {
-        title
-      }
-    })
+  Page.findAll({where: {title}})
     .then((pageRes) => {
       if (pageRes.length > 0) {
         return res
