@@ -12,6 +12,6 @@ router.route('/:id')
   .get(controller.getPost);
 
 router.route('/:id')
-  .delete(controller.deletePost);
+  .delete(passport.authenticate('jwt', { session: false }), controller.deletePost);
 
 module.exports = router;
