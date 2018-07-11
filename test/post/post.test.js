@@ -7,7 +7,9 @@ const faker = require('faker');
 
 describe('[POST] /api/posts Testing', () => {
 
-  let postID = '';
+  let postID = '',
+    token = '';
+
   it('should be able to get a list of all seeded posts', (done) => {
     request(app)
       .get('/api/posts')
@@ -32,7 +34,7 @@ describe('[POST] /api/posts Testing', () => {
       });
   });
 
-  it('should be able to create post if logged in', (done) => {
+  it('should be able to create and delete post if logged in', (done) => {
     request(app)
       .post('/auth/login')
       .send({
@@ -43,16 +45,16 @@ describe('[POST] /api/posts Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
-        let token = res.body.token;
+        token = res.body.token;
         request(app)
           .post(`/api/posts`)
           .send({
             title: faker.lorem.sentence(5),
             image: faker.image.imageUrl(),
-            category: faker.random.arrayElement(['news','event','need']),
+            category: faker.random.arrayElement(['news', 'event', 'need']),
             date: new Date(),
             expiry: faker.date.future(),
-            status: faker.random.arrayElement(['published','draft']),
+            status: faker.random.arrayElement(['published', 'draft']),
             text: faker.lorem.text()
           })
           .set('Authorization', `Bearer ${token}`)
@@ -60,9 +62,19 @@ describe('[POST] /api/posts Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
+            postID = res.body.post.id;
             expect(res.body.post).to.be.an('object');
             expect(res.body.post).to.have.all.keys('id', 'title', 'category', 'image', 'date', 'expiry', 'frequency', 'createdAt', 'status', 'text', 'updatedAt');
-            done();
+            request(app)
+              .delete(`/api/posts/${postID}`)
+              .set('Authorization', `Bearer ${token}`)
+              .set('Accept', 'application/json')
+              .expect('Content-Type', /json/)
+              .expect(202)
+              .end((err, res) => {
+                expect(res.body).to.be.an('object');
+                done();
+              });
           });
       });
   });

@@ -3,7 +3,6 @@
 const app = require('../../server/server');
 const request = require('supertest');
 const expect = require('chai').expect;
-const assert = require('assert');
 const faker = require('faker');
 
 describe('[PAGE] /api/pages Testing', () => {
@@ -15,7 +14,6 @@ describe('[PAGE] /api/pages Testing', () => {
       .end((err, res) => {
         expect(res.body.pages).to.be.an('array');
         expect(res.body.pages[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
-        assert.equal((res.body.pages).length, 6);
         // set page id for next test
         pageID = res.body.pages[0].id;
         done();
@@ -44,7 +42,6 @@ describe('[PAGE] /api/pages Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
-        console.log(res.body);
         let token = res.body.token;
         request(app)
           .post(`/api/pages`)
@@ -60,7 +57,6 @@ describe('[PAGE] /api/pages Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            console.log(res.body);
             expect(res.body.page).to.be.an('object');
             expect(res.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
             done();
