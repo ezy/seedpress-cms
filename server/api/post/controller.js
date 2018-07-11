@@ -72,8 +72,25 @@ function getPost(req, res) {
     }));
 }
 
+// Get one post
+function deletePost(req, res) {
+  Post.findById(req.params.id)
+  .then((post) => {
+    post.destroy()
+      .then(() => {
+        res.status(200).send({
+          success: 'Post successfully deleted.'
+        });
+      });
+  })
+  .catch((err) => res.status(400).send({
+    error: err.message
+  }));
+}
+
 module.exports = {
   savePost,
   getAllPosts,
-  getPost
+  getPost,
+  deletePost
 };

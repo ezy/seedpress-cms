@@ -16,7 +16,7 @@
     "stopdb": "pg_ctl -D /usr/local/var/postgres stop",
     "droptest": "psql -c 'DROP DATABASE IF EXISTS newseed_test' && psql -c 'CREATE DATABASE newseed_test'",
     "resettest": "yarn droptest && sequelize db:migrate --env test && sequelize db:seed:all --env test",
-    "test": "export NODE_ENV=test && node index.js",
+    "test": "export NODE_ENV=test && nodemon index.js",
     "test:only": "export NODE_ENV=test && ./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",
     "coverage": "istanbul cover _mocha -- -R spec 'test/**/**/**/**test.js'"
   },
