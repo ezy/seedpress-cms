@@ -12,11 +12,11 @@ describe('[PAGE] /api/pages Testing', () => {
       .get('/api/pages')
       .expect(200)
       .end((err, resp) => {
-        expect(resp.body).to.be.an('array');
-        expect(resp.body[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
-        assert.equal((resp.body).length, 6);
+        expect(resp.body.pages).to.be.an('array');
+        expect(resp.body.pages[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+        assert.equal((resp.body.pages).length, 6);
         // set page id for next test
-        pageID = resp.body[0].id;
+        pageID = resp.body.pages[0].id;
         done();
       });
   });
@@ -25,8 +25,8 @@ describe('[PAGE] /api/pages Testing', () => {
       .get(`/api/pages/${pageID}`)
       .expect(200)
       .end((err, resp) => {
-        expect(resp.body).to.be.an('object');
-        expect(resp.body).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+        expect(resp.body.page).to.be.an('object');
+        expect(resp.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
         done();
       });
   });

@@ -10,7 +10,7 @@ describe('[Authentication] /auth Testing', () => {
     request(app)
       .post('/auth/register')
       .send({
-        email: 'ezrakeddell@gmail.com',
+        email: 'user@email.com',
         password: 'passwrod'
       })
       .set('Accept', 'application/json')
@@ -20,12 +20,12 @@ describe('[Authentication] /auth Testing', () => {
         request(app)
           .post('/auth/signin')
           .send({
-            email: 'ezrakeddell@gmail.com',
+            email: 'user@email.com',
             password: 'passwrod'
           })
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
-          .expect(201)
+          .expect(200)
           .end((err2, resp) => {
             expect(resp.body).to.be.an('object');
             done();
@@ -37,7 +37,7 @@ describe('[Authentication] /auth Testing', () => {
     request(app)
       .post('/auth/login')
       .send({
-        email: 'ezrakeddell@gmail.com',
+        email: 'user@email.com',
         password:'BadPass123!'
       })
       .set('Accept', 'application/json')
@@ -92,7 +92,7 @@ describe('[Authentication] /auth Testing', () => {
     request(app)
       .post('/auth/register/')
       .send({
-        email: 'ezrakeddell@gmail.com',
+        email: 'user@email.com',
         password: 'Pass123!'
       })
       .set('Accept', 'application/json')

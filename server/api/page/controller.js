@@ -23,8 +23,8 @@ function savePage(req, res) {
         title
       }
     })
-    .then((page) => {
-      if (page.length > 0) {
+    .then((pageRes) => {
+      if (pageRes.length > 0) {
         return res
           .status(400)
           .send({
@@ -32,19 +32,12 @@ function savePage(req, res) {
           });
       }
 
-      const newPage = {
-        title,
-        image,
-        text,
-        slide,
-        updated,
-        status
-      };
+      const newPage = {title,image,text,slide,updated,status};
 
       Page.create(newPage)
-        .then((data) => res.json({
-          data
-        }))
+        .then((page) => {
+          return res.json({page});
+        })
         .catch((err) => res.status(400).send({
           error: err.message
         }));
@@ -58,7 +51,7 @@ function savePage(req, res) {
 function getAllPages(req, res) {
   Page.findAll()
     .then((pages) => {
-      return res.json(pages);
+      return res.json({pages});
     })
     .catch((err) => res.status(400).send({
       error: err.message
@@ -74,7 +67,7 @@ function getPage(req, res) {
           error: 'No page found'
         });
       }
-      return res.json(page);
+      return res.json({page});
     })
     .catch((err) => res.status(400).send({
       error: err.message

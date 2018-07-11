@@ -22,13 +22,9 @@ function saveMedia(req, res) {
   }
 
   // Check if title already exists
-  Media.findAll({
-      where: {
-        title
-      }
-    })
-    .then((media) => {
-      if (media.length > 0) {
+  Media.findAll({where: {title}})
+    .then((mediaRes) => {
+      if (mediaRes.length > 0) {
         return res
           .status(400)
           .send({
@@ -36,35 +32,12 @@ function saveMedia(req, res) {
           });
       }
 
-      const newMedia = {
-        title,
-        image,
-        text,
-        speaker,
-        date,
-        category,
-        link,
-        tags,
-        updated,
-        status
-      };
+      const newMedia = {title,image,text,speaker,date,category,link,tags,updated,status};
 
       Media.create(newMedia)
-        .then((data) => res.json({
-          media: {
-            id: data.id,
-            title: data.title,
-            date: data.date,
-            image: data.image,
-            text: data.text,
-            speaker: data.speaker,
-            category: data.category,
-            link: data.link,
-            tags: data.tags,
-            updated: data.updated,
-            status: data.status
-          }
-        }))
+        .then((media) => {
+          return res.json({media});
+        })
         .catch((err) => res.status(400).send({
           error: err.message
         }));
@@ -94,19 +67,7 @@ function getMedia(req, res) {
           error: 'No media found'
         });
       }
-      return res.json({
-        id: media.id,
-        title: media.title,
-        image: media.image,
-        text: media.text,
-        speaker: media.speaker,
-        date: media.date,
-        category: media.category,
-        link: media.link,
-        tags: media.tags,
-        updated: media.updated,
-        status: media.status
-      });
+      return res.json({media});
     })
     .catch((err) => res.status(400).send({
       error: err.message

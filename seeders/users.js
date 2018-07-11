@@ -20,9 +20,9 @@ module.exports = {
   up: (queryInterface) => {
     return queryInterface.bulkInsert('Users', usersList.concat([{
       id: faker.random.uuid(),
-      firstName: 'Ezra',
-      lastName: 'Keddell',
-      email: 'ezrakeddell@gmail.com',
+      firstName: 'John',
+      lastName: 'User',
+      email: 'user@email.com',
       password: bcrypt.hashSync('passwrod', 10),
       createdAt: new Date(),
       updatedAt: new Date()
