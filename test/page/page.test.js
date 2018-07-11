@@ -4,6 +4,7 @@ const app = require('../../server/server');
 const request = require('supertest');
 const expect = require('chai').expect;
 const assert = require('assert');
+const faker = require('faker');
 
 describe('[PAGE] /api/pages Testing', () => {
   let pageID = '';
@@ -20,6 +21,7 @@ describe('[PAGE] /api/pages Testing', () => {
         done();
       });
   });
+
   it('should be able to get a single page', (done) => {
     request(app)
       .get(`/api/pages/${pageID}`)
@@ -28,6 +30,39 @@ describe('[PAGE] /api/pages Testing', () => {
         expect(resp.body.page).to.be.an('object');
         expect(resp.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
         done();
+      });
+  });
+
+  it('should be able to create page if logged in', (done) => {
+    request(app)
+      .post('/auth/login')
+      .send({
+        email: 'user@email.com',
+        password: 'passwrod'
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err, res) => {
+        let token = res.body.token;
+        request(app)
+          .post(`/api/pages`)
+          .send({
+            title: faker.lorem.sentence(5),
+            image: faker.image.imageUrl(),
+            status: faker.random.arrayElement(['published','draft']),
+            slide: faker.random.arrayElement([0,1]),
+            text: faker.lorem.text()
+          })
+          .set('Authorization', `Bearer ${token}`)
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(201)
+          .end((err, res) => {
+            expect(resp.body.page).to.be.an('object');
+            expect(resp.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+            done();
+          });
       });
   });
 });

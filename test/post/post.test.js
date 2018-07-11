@@ -43,7 +43,6 @@ describe('[POST] /api/posts Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
-        console.log(res.body);
         let token = res.body.token;
         request(app)
           .post(`/api/posts`)
@@ -61,7 +60,6 @@ describe('[POST] /api/posts Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            console.log(res.body.post);
             expect(res.body.post).to.be.an('object');
             expect(res.body.post).to.have.all.keys('id', 'title', 'category', 'image', 'date', 'expiry', 'frequency', 'createdAt', 'status', 'text', 'updatedAt');
             done();
