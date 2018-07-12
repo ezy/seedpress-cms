@@ -8,7 +8,13 @@ router.route('/')
 router.route('/')
   .get(controller.getAllPages);
 
-router.route('/:id')
+router.route('/:slug')
   .get(controller.getPage);
+
+router.route('/:slug')
+  .patch(passport.authenticate('jwt', { session: false }), controller.updatePage);
+
+router.route('/:slug')
+  .delete(passport.authenticate('jwt', { session: false }), controller.deletePage);
 
 module.exports = router;

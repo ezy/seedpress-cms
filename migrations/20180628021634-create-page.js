@@ -10,9 +10,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       slide: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       status: {
+        type: Sequelize.STRING
+      },
+      slug: {
         type: Sequelize.STRING
       },
       text: {

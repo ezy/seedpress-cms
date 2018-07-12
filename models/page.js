@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     slide: DataTypes.INTEGER,
     status: DataTypes.STRING,
+    slug: DataTypes.STRING,
     text: DataTypes.TEXT,
     title: DataTypes.STRING
   }, {});

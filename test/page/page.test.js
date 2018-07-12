@@ -4,34 +4,40 @@ const app = require('../../server/server');
 const request = require('supertest');
 const expect = require('chai').expect;
 const faker = require('faker');
+const changeCase = require('change-case');
 
 describe('[PAGE] /api/pages Testing', () => {
-  let pageID = '';
+  let pageSlug = '',
+      token = '',
+      pageKeys = ['id','title','slug','image','slide','createdAt','status','text','updatedAt'];
+
   it('should be able to get a list of all seeded pages', (done) => {
     request(app)
       .get('/api/pages')
       .expect(200)
       .end((err, res) => {
+        console.log(res.body.pages[0]);
         expect(res.body.pages).to.be.an('array');
-        expect(res.body.pages[0]).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+        expect(res.body.pages[0]).to.have.all.keys(pageKeys);
         // set page id for next test
-        pageID = res.body.pages[0].id;
+        pageSlug = res.body.pages[0].slug;
         done();
       });
   });
 
   it('should be able to get a single page', (done) => {
+    console.log(pageSlug);
     request(app)
-      .get(`/api/pages/${pageID}`)
+      .get(`/api/pages/${pageSlug}`)
       .expect(200)
       .end((err, res) => {
         expect(res.body.page).to.be.an('object');
-        expect(res.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
+        expect(res.body.page).to.have.all.keys(pageKeys);
         done();
       });
   });
 
-  it('should be able to create page if logged in', (done) => {
+  it('should be able to create and delete page if logged in', (done) => {
     request(app)
       .post('/auth/login')
       .send({
@@ -42,14 +48,18 @@ describe('[PAGE] /api/pages Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
-        let token = res.body.token;
+        token = res.body.token;
+        title = faker.lorem.sentence(5);
         request(app)
           .post(`/api/pages`)
           .send({
-            title: faker.lorem.sentence(5),
+            title: title,
+            slug: `${changeCase.paramCase(title)}-${Date.now()}`,
             image: faker.image.imageUrl(),
-            status: faker.random.arrayElement(['published','draft']),
-            slide: faker.random.arrayElement(['0','1']),
+            category: faker.random.arrayElement(['news', 'event', 'need']),
+            date: new Date(),
+            expiry: faker.date.future(),
+            status: faker.random.arrayElement(['published', 'draft']),
             text: faker.lorem.text()
           })
           .set('Authorization', `Bearer ${token}`)
@@ -57,9 +67,20 @@ describe('[PAGE] /api/pages Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
+            console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',res.body);
+            pageSlug = res.body.page.slug;
             expect(res.body.page).to.be.an('object');
-            expect(res.body.page).to.have.all.keys('id','title','image','slide','createdAt','status','text','updatedAt');
-            done();
+            expect(res.body.page).to.have.all.keys(pageKeys);
+            request(app)
+              .delete(`/api/pages/${pageSlug}`)
+              .set('Authorization', `Bearer ${token}`)
+              .set('Accept', 'application/json')
+              .expect('Content-Type', /json/)
+              .expect(202)
+              .end((err, res) => {
+                expect(res.body).to.be.an('object');
+                done();
+              });
           });
       });
   });

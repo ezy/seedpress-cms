@@ -1,8 +1,11 @@
 const Page = require('../../../models').Page;
+const changeCase = require('change-case');
 
 // Register new page
 function createPage(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
+  let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
+
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
   const slide = req.body.slide ? req.body.slide.trim() : '';
@@ -18,15 +21,15 @@ function createPage(req, res) {
   }
 
   // Check if title already exists
-  Page.findAll({where: {title}})
+  Page.findOne({where: { slug }})
     .then((pageRes) => {
-      if (pageRes.length > 0) {
+      if (pageRes) {
         return res.status(409).send({
           error: 'The page has already been created'
         });
       }
 
-      const newPage = {title,image,text,slide,updated,status};
+      const newPage = { title,slug,image,text,slide,updated,status };
 
       Page.create(newPage)
         .then((page) => {
@@ -41,11 +44,11 @@ function createPage(req, res) {
     }));
 }
 
-// Get all posts
+// Get all pages
 function getAllPages(req, res) {
   Page.findAll()
     .then((pages) => {
-      return res.json({pages});
+      return res.json({ pages });
     })
     .catch((err) => res.status(400).send({
       error: err.message
@@ -54,9 +57,10 @@ function getAllPages(req, res) {
 
 // Get one page
 function getPage(req, res) {
-  Page.findById(req.params.id)
+  const slug = req.params.slug;
+  Page.findOne({where: { slug }})
     .then((page) => {
-      if (!page || page.title.length <= 0) {
+      if (!page) {
         return res.status(400).send({
           error: 'No page found'
         });
@@ -68,8 +72,55 @@ function getPage(req, res) {
     }));
 }
 
+// Update existing page
+function updatePage(req, res) {
+
+  const slug = req.params.slug;
+
+  Page.findOne({where: { slug }})
+    .then((page) => {
+      if (!page) {
+        return res.status(404).send({
+          error: 'No page found'
+        });
+      }
+
+      // Change the slug if the title is different
+      let newTitle = changeCase.paramCase(req.body.title);
+      if (!page.dataValues.slug.includes(newTitle)) {
+        req.body.slug = `${newTitle}-${Date.now()}`;
+      }
+      return page.updateAttributes(req.body);
+    })
+    .then((updatedPage) => {
+      res.json(updatedPage);
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
+// Delete one page
+function deletePage(req, res) {
+  const slug = req.params.slug;
+  Page.findOne({where: { slug }})
+  .then((page) => {
+    page.destroy()
+      .then(() => {
+        res.status(200).send({
+          success: 'Page successfully deleted.'
+        });
+      });
+  })
+  .catch((err) => res.status(400).send({
+    error: err.message
+  }));
+}
+
 module.exports = {
   createPage,
   getAllPages,
-  getPage
+  getPage,
+  updatePage,
+  deletePage
 };

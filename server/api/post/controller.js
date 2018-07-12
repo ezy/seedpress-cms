@@ -25,7 +25,7 @@ function createPost(req, res) {
   // Check if title already exists
   Post.findOne({where: { slug }})
     .then((postRes) => {
-      if (postRes.length > 0) {
+      if (postRes) {
         return res.status(409).send({
           error: 'The page has already been created'
         });
@@ -62,7 +62,7 @@ function getPost(req, res) {
   const slug = req.params.slug;
   Post.findOne({where: { slug }})
     .then((post) => {
-      if (!post || post.title.length <= 0) {
+      if (!post) {
         return res.status(400).send({
           error: 'No post found'
         });
@@ -79,21 +79,20 @@ function updatePost(req, res) {
 
   const slug = req.params.slug;
 
-  // Check if title already exists
   Post.findOne({where: { slug }})
-    .then((postRes) => {
-      if (!postRes) {
+    .then((post) => {
+      if (!post) {
         return res.status(404).send({
-          error: 'The post doesn\'t exist'
+          error: 'No post found'
         });
       }
 
       // Change the slug if the title is different
       let newTitle = changeCase.paramCase(req.body.title);
-      if (!postRes.dataValues.slug.includes(newTitle)) {
+      if (!post.dataValues.slug.includes(newTitle)) {
         req.body.slug = `${newTitle}-${Date.now()}`;
       }
-      return postRes.updateAttributes(req.body);
+      return post.updateAttributes(req.body);
     })
     .then((updatedPost) => {
       res.json(updatedPost);
