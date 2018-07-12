@@ -77,30 +77,26 @@ function getPost(req, res) {
 // Update existing post
 function updatePost(req, res) {
 
-  let slug = res.body.slug;
-
-  if (!slug) {
-    return res.status(422).send({
-      error: 'A title is required.'
-    });
-  }
+  const slug = req.params.slug;
 
   // Check if title already exists
   Post.findOne({where: { slug }})
     .then((postRes) => {
-      if (!postRes.length) {
+      if (!postRes) {
         return res.status(404).send({
           error: 'The post doesn\'t exist'
         });
       }
 
-      Post.update(postRes.body)
-        .then((post) => {
-          return res.json({post});
-        })
-        .catch((err) => res.status(400).send({
-          error: err.message
-        }));
+      // Change the slug if the title is different
+      let newTitle = changeCase.paramCase(req.body.title);
+      if (!postRes.dataValues.slug.includes(newTitle)) {
+        req.body.slug = `${newTitle}-${Date.now()}`;
+      }
+      return postRes.updateAttributes(req.body);
+    })
+    .then((updatedPost) => {
+      res.json(updatedPost);
     })
     .catch((err) => res.status(400).send({
       error: err.message

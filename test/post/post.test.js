@@ -10,7 +10,7 @@ describe('[POST] /api/posts Testing', () => {
 
   let postSlug = '',
       token = '',
-      keys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
+      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
 
   it('should be able to get a list of all seeded posts', (done) => {
     request(app)
@@ -18,7 +18,7 @@ describe('[POST] /api/posts Testing', () => {
       .expect(200)
       .end((err, res) => {
         expect(res.body.posts).to.be.an('array');
-        expect(res.body.posts[0]).to.have.all.keys(keys);
+        expect(res.body.posts[0]).to.have.all.keys(postKeys);
         // set post id for next test
         postSlug = res.body.posts[0].slug;
         done();
@@ -31,7 +31,7 @@ describe('[POST] /api/posts Testing', () => {
       .expect(200)
       .end((err, res) => {
         expect(res.body.post).to.be.an('object');
-        expect(res.body.post).to.have.all.keys(keys);
+        expect(res.body.post).to.have.all.keys(postKeys);
         done();
       });
   });
@@ -68,7 +68,7 @@ describe('[POST] /api/posts Testing', () => {
           .end((err, res) => {
             postSlug = res.body.post.slug;
             expect(res.body.post).to.be.an('object');
-            expect(res.body.post).to.have.all.keys(keys);
+            expect(res.body.post).to.have.all.keys(postKeys);
             request(app)
               .delete(`/api/posts/${postSlug}`)
               .set('Authorization', `Bearer ${token}`)

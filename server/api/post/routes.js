@@ -12,6 +12,9 @@ router.route('/:slug')
   .get(controller.getPost);
 
 router.route('/:slug')
+  .patch(passport.authenticate('jwt', { session: false }), controller.updatePost);
+
+router.route('/:slug')
   .delete(passport.authenticate('jwt', { session: false }), controller.deletePost);
 
 module.exports = router;
