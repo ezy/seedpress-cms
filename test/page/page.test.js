@@ -67,7 +67,6 @@ describe('[PAGE] /api/pages Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',res.body);
             pageSlug = res.body.page.slug;
             expect(res.body.page).to.be.an('object');
             expect(res.body.page).to.have.all.keys(pageKeys);
