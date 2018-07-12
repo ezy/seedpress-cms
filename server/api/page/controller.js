@@ -1,7 +1,7 @@
 const Page = require('../../../models').Page;
 
 // Register new page
-function savePage(req, res) {
+function createPage(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
@@ -21,11 +21,9 @@ function savePage(req, res) {
   Page.findAll({where: {title}})
     .then((pageRes) => {
       if (pageRes.length > 0) {
-        return res
-          .status(400)
-          .send({
-            error: 'The page has already been created'
-          });
+        return res.status(409).send({
+          error: 'The page has already been created'
+        });
       }
 
       const newPage = {title,image,text,slide,updated,status};
@@ -71,7 +69,7 @@ function getPage(req, res) {
 }
 
 module.exports = {
-  savePage,
+  createPage,
   getAllPages,
   getPage
 };

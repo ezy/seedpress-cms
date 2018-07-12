@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     title: { type:DataTypes.STRING, allowNull: false },
+    slug: { type:DataTypes.STRING, allowNull: false },
     image: DataTypes.STRING,
     category: { type:DataTypes.STRING, defaultValue: 'news', allowNull: false },
     date: { type: DataTypes.DATE, defaultValue: date, allowNull: false },

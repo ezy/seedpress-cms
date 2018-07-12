@@ -3,7 +3,7 @@ const controller = require('./controller');
 const passport = require('passport');
 
 router.route('/')
-  .post(passport.authenticate('jwt', { session: false }), controller.savePage);
+  .post(passport.authenticate('jwt', { session: false }), controller.createPage);
 
 router.route('/')
   .get(controller.getAllPages);

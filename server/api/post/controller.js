@@ -1,8 +1,11 @@
 const Post = require('../../../models').Post;
+const changeCase = require('change-case');
 
-// Register new post
-function savePost(req, res) {
+// Create new post
+function createPost(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
+  let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
+
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
   const category = req.body.category ? req.body.category.trim() : 'news';
@@ -14,23 +17,21 @@ function savePost(req, res) {
   const status = req.body.status ? req.body.status.trim() : '';
 
   if (!title) {
-    return res
-      .status(422)
-      .send({error: 'A title is required.'});
+    return res.status(422).send({
+      error: 'A title is required.'
+    });
   }
 
   // Check if title already exists
-  Post.findAll({where: {title}})
+  Post.findOne({where: { slug }})
     .then((postRes) => {
       if (postRes.length > 0) {
-        return res
-          .status(400)
-          .send({
-            error: 'The post has already been created'
-          });
+        return res.status(409).send({
+          error: 'The page has already been created'
+        });
       }
 
-      const newPost = { title,image,text,category,date,expires,frequency,tags,updated,status };
+      const newPost = { title,slug,image,text,category,date,expires,frequency,tags,updated,status };
 
       Post.create(newPost)
         .then((post) => {
@@ -58,23 +59,58 @@ function getAllPosts(req, res) {
 
 // Get one post
 function getPost(req, res) {
-  Post.findById(req.params.id)
+  const slug = req.params.slug;
+  Post.findOne({where: { slug }})
     .then((post) => {
       if (!post || post.title.length <= 0) {
         return res.status(400).send({
           error: 'No post found'
         });
       }
-      return res.json({post});
+      return res.json({ post });
     })
     .catch((err) => res.status(400).send({
       error: err.message
     }));
 }
 
-// Get one post
+// Update existing post
+function updatePost(req, res) {
+
+  let slug = res.body.slug;
+
+  if (!slug) {
+    return res.status(422).send({
+      error: 'A title is required.'
+    });
+  }
+
+  // Check if title already exists
+  Post.findOne({where: { slug }})
+    .then((postRes) => {
+      if (!postRes.length) {
+        return res.status(404).send({
+          error: 'The post doesn\'t exist'
+        });
+      }
+
+      Post.update(postRes.body)
+        .then((post) => {
+          return res.json({post});
+        })
+        .catch((err) => res.status(400).send({
+          error: err.message
+        }));
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
+// Delete one post
 function deletePost(req, res) {
-  Post.findById(req.params.id)
+  const slug = req.params.slug;
+  Post.findOne({where: { slug }})
   .then((post) => {
     post.destroy()
       .then(() => {
@@ -89,8 +125,9 @@ function deletePost(req, res) {
 }
 
 module.exports = {
-  savePost,
+  createPost,
   getAllPosts,
   getPost,
+  updatePost,
   deletePost
 };

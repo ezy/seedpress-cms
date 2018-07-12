@@ -25,6 +25,7 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.15.2",
+    "change-case": "^3.0.2",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "express": "^4.16.3",
