@@ -1,4 +1,5 @@
 const Post = require('../../../models').Post;
+const Tag = require('../../../models').Tag;
 const changeCase = require('change-case');
 
 // Create new post
@@ -23,7 +24,17 @@ function createPost(req, res) {
   }
 
   // Check if title already exists
-  Post.findOne({where: { slug }})
+  Post.findAll({
+    where: { slug },
+    include: [{
+      model: Tag,
+      as: 'tags',
+      required:
+      false,
+      attributes: ['id','name'],
+      through: { attributes: [] }
+    }]
+  })
     .then((postRes) => {
       if (postRes) {
         return res.status(409).send({
@@ -33,7 +44,7 @@ function createPost(req, res) {
 
       const newPost = { title,slug,image,text,category,date,expires,frequency,tags,updated,status };
 
-      Post.create(newPost)
+      Post.create(newPost, { include: [{model: Tag, as: 'tags'}] })
         .then((post) => {
           return res.json({post});
         })
@@ -48,7 +59,15 @@ function createPost(req, res) {
 
 // Get all posts
 function getAllPosts(req, res) {
-  Post.findAll()
+  Post.findAll({ include: [{
+      model: Tag,
+      as: 'tags',
+      required:
+      false,
+      attributes: ['id','name'],
+      through: { attributes: [] }
+    }]
+  })
     .then((posts) => {
       return res.json({posts});
     })
@@ -60,7 +79,7 @@ function getAllPosts(req, res) {
 // Get one post
 function getPost(req, res) {
   const slug = req.params.slug;
-  Post.findOne({where: { slug }})
+  Post.findOne({where: { slug }, include: [{model: Tag, as: 'tags'}]})
     .then((post) => {
       if (!post) {
         return res.status(400).send({

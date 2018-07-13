@@ -5,5 +5,6 @@ router.use('/users', require('./user/routes'));
 router.use('/posts', require('./post/routes'));
 router.use('/pages', require('./page/routes'));
 router.use('/medias', require('./media/routes'));
+router.use('/tags', require('./media/routes'));
 
 module.exports = router;

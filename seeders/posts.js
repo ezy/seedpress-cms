@@ -5,7 +5,7 @@ let postsList = [];
 
 for (let i = 0; i < 6; i++) {
   let title = faker.lorem.sentence(5);
-  const userObj = {
+  const postObj = {
     id: faker.random.uuid(),
     title: title,
     slug: `${changeCase.paramCase(title)}-${Date.now()}`,
@@ -18,15 +18,15 @@ for (let i = 0; i < 6; i++) {
     createdAt: new Date(),
     updatedAt: new Date()
   };
-  postsList.push(userObj);
+  postsList.push(postObj);
 }
 
 module.exports = {
-  up: (queryInterface) => {
-    return queryInterface.bulkInsert('Posts', postsList, {});
+  up: async (queryInterface) => {
+    await queryInterface.bulkInsert('Posts', postsList, {});
   },
 
-  down: (queryInterface) => {
-    return queryInterface.bulkDelete('Posts', null, {});
+  down: async (queryInterface) => {
+    await queryInterface.bulkDelete('Posts', null, {});
   }
 };

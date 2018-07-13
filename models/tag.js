@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  let Tag = sequelize.define('Tag', {
+  const Tag = sequelize.define('Tag', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -9,8 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING
   }, {});
-  Tag.associate = function(models) {
-    Tag.belongsTo(models.Post);
+  Tag.associate = (models) => {
+    Tag.belongsToMany(models.Post, {
+      through: 'PostTags',
+      as: 'tags',
+      foreignKey: 'tagId'
+    });
   };
   return Tag;
 };

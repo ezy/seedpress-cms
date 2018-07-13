@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint server ; exit 0",
     "dropdev": "psql -c 'DROP DATABASE IF EXISTS newseed_dev' && psql -c 'CREATE DATABASE newseed_dev'",
-    "reset": "yarn dropdev && sequelize db:migrate && sequelize db:seed:all",
+    "reset": "yarn dropdev && sequelize db:migrate && sequelize db:seed:all && yarn start",
     "start": " export NODE_ENV=development && nodemon index.js",
     "startdb": "pg_ctl -D /usr/local/var/postgres start",
     "stopdb": "pg_ctl -D /usr/local/var/postgres stop",

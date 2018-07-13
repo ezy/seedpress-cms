@@ -1,7 +1,7 @@
 const date = new Date();
 
 module.exports = (sequelize, DataTypes) => {
-  let Post = sequelize.define('Post', {
+  const Post = sequelize.define('Post', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -19,8 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     text: DataTypes.TEXT
   }, {});
-  Post.associate = function(models) {
-    Post.hasMany(models.Tag);
+  Post.associate = (models) => {
+    Post.belongsToMany(models.Tag, {
+      through: 'PostTags',
+      as: 'tags',
+      foreignKey: 'postId'
+    });
   };
   return Post;
 };

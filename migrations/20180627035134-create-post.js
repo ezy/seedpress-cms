@@ -7,6 +7,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID
       },
+      tagId: {
+          type: Sequelize.UUID,
+          references: {
+              model: 'Posts',
+              key: 'id'
+          },
+          onDelete: 'CASCADE'
+      },
       title: {
         type: Sequelize.STRING
       },

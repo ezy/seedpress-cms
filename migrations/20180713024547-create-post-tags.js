@@ -1,22 +1,16 @@
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Tags', {
+    return queryInterface.createTable('PostTags', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
       postId: {
-          type: Sequelize.UUID,
-          references: {
-              model: 'Tags',
-              key: 'id'
-          },
-          onDelete: 'CASCADE'
+        type: Sequelize.UUID
       },
-      name: {
-        type: Sequelize.STRING
+      tagId: {
+        type: Sequelize.UUID
       },
       createdAt: {
         type: Sequelize.DATE
@@ -27,6 +21,6 @@ module.exports = {
     });
   },
   down: (queryInterface) => {
-    return queryInterface.dropTable('Tags');
+    return queryInterface.dropTable('PostTags');
   }
 };

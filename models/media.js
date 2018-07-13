@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING
   }, {});
   Media.associate = function(models) {
-    Media.hasMany(models.Tag);
+    Media.hasMany(models.Tag, { as: 'tags', foreignKey: 'id' });
   };
   return Media;
 };
