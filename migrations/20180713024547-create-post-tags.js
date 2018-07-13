@@ -2,7 +2,6 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('PostTags', {
       id: {
-        allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },

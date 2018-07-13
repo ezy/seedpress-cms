@@ -24,17 +24,7 @@ function createPost(req, res) {
   }
 
   // Check if title already exists
-  Post.findAll({
-    where: { slug },
-    include: [{
-      model: Tag,
-      as: 'tags',
-      required:
-      false,
-      attributes: ['id','name'],
-      through: { attributes: [] }
-    }]
-  })
+  Post.findOne({ where: { slug }})
     .then((postRes) => {
       if (postRes) {
         return res.status(409).send({
@@ -44,7 +34,7 @@ function createPost(req, res) {
 
       const newPost = { title,slug,image,text,category,date,expires,frequency,tags,updated,status };
 
-      Post.create(newPost, { include: [{model: Tag, as: 'tags'}] })
+      Post.create(newPost, { include: [{model: Tag, as:'tags'}] })
         .then((post) => {
           return res.json({post});
         })
@@ -60,14 +50,13 @@ function createPost(req, res) {
 // Get all posts
 function getAllPosts(req, res) {
   Post.findAll({ include: [{
-      model: Tag,
-      as: 'tags',
-      required:
-      false,
-      attributes: ['id','name'],
-      through: { attributes: [] }
-    }]
-  })
+        model: Tag,
+        as: 'tags',
+        required: false,
+        attributes: ['id','name'],
+        through: { attributes: [] }
+      }]
+    })
     .then((posts) => {
       return res.json({posts});
     })
