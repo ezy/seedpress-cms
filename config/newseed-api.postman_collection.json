@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "f97e2d84-9654-400b-b368-a05933b11a6c",
+		"name": "newseed-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost: 1337/auth/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"username@new.com\",\"password\":\"passwrod\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost: 1337/auth/login/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"user@email.com\",\"password\":\"passwrod\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:1337/api/posts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjZjc5YjZjLWMyZGEtNDczYS1iNjhkLTM4ODcwYzY4OTUzYiIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkT3FHdndtdE04UkdmZHIxQkl4bHk3ZUtVZ1pud0ZMS0dFb1RtZWhVWk5yQi9meG9GTVlKS0MiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJpYXQiOjE1MzE2OTUwNzMsImV4cCI6MTUzNDI4NzA3M30.YAk0W_AOZCqEZNgVgeOl1d1Qhc00XGWnqIyLO8cXR4g"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"tagsss\",\"date\": \"2018-07-02T00:36:26.371Z\",\"expiry\": \"2019-05-16T16:49:00.638Z\",\"status\": \"published\",\"text\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postTags\":[{\"name\":\"one\"},{\"name\":\"two\"}]}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/posts/get-single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/posts/officia-quia-repellendus-deserunt-et-1531356733490",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"officia-quia-repellendus-deserunt-et-1531356733490"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/posts/update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhM2JiOWYyLWE1NjEtNDAyNC1iNjA1LWQ3ZDVjNGNjMzUxMSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkODdZQVU5TzZELi5rVFRNTkk3WXRodTdFLzVUc25SZ1cwZDVhSjU2Rk9vS2VVdDIvSUFqN0siLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJpYXQiOjE1MzEzNTAxODEsImV4cCI6MTUzMzk0MjE4MX0.JdAiMrRf_HQW36BN2GkSaGXRy0deVeovdELF6In1_hU"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"A goodsss day\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts/a-goods-day-1531365916546",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"a-goods-day-1531365916546"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/posts-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiZTMwZTgwLTUzY2UtNDRkOC05MzhlLWFiZDRhYjA5MGM2ZCIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkakVDdXB4cVNxRjZvQ3RyYzZIVnpEZVpDd2dXMVlCaWhnUUZMYjR0a3VaWGUyYUhPTk44aHkiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJpYXQiOjE1MzEyODY1MDgsImV4cCI6MTUzMzg3ODUwOH0.NgVhTMAUjR2H4WpBTDSo-4_7hCpxO4WVVmqXPs0-W-4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts/ab62e275-a4ba-4358-aa5d-20e00e4ab2a0",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"ab62e275-a4ba-4358-aa5d-20e00e4ab2a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tags",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:1337/api/tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/tags",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pages",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:1337/api/pages",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdkNmU5OGE2LWVjZjEtNDZmNC1hNzE3LWU4NTE4Y2E5M2M4ZiIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkRncwb3k0d0hSOEUuTmVIWElKSm13ZUIzUlhOTFNYTThuZ1ROOEpyZHRqblptUGZJVW44cHUiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTEyVDA0OjAyOjEwLjc5MVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTEyVDA0OjAyOjEwLjc5MVoiLCJpYXQiOjE1MzEzNjgzNTgsImV4cCI6MTUzMzk2MDM1OH0.RCPAbOInAEGPjl6Sl2c8mcmTr6ynXy8uolRt07hcetg"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"aaaaaaa\",\"date\": \"2018-07-02T00:36:26.371Z\",\"image\": \"/image\",\"slide\": \"0\",\"status\": \"published\",\"text\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/pages",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/pages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/pages",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/pages/single-page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/pages/illum-vitae-aliquid-laudantium-quo-1531368130236",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"pages",
+								"illum-vitae-aliquid-laudantium-quo-1531368130236"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/pages/update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhM2JiOWYyLWE1NjEtNDAyNC1iNjA1LWQ3ZDVjNGNjMzUxMSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkODdZQVU5TzZELi5rVFRNTkk3WXRodTdFLzVUc25SZ1cwZDVhSjU2Rk9vS2VVdDIvSUFqN0siLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJpYXQiOjE1MzEzNTAxODEsImV4cCI6MTUzMzk0MjE4MX0.JdAiMrRf_HQW36BN2GkSaGXRy0deVeovdELF6In1_hU"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"A goodsss day\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/pages/illum-vitae-aliquid-laudantium-quo-1531368130236",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"pages",
+								"illum-vitae-aliquid-laudantium-quo-1531368130236"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1337/api/pages-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiZTMwZTgwLTUzY2UtNDRkOC05MzhlLWFiZDRhYjA5MGM2ZCIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkakVDdXB4cVNxRjZvQ3RyYzZIVnpEZVpDd2dXMVlCaWhnUUZMYjR0a3VaWGUyYUhPTk44aHkiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJpYXQiOjE1MzEyODY1MDgsImV4cCI6MTUzMzg3ODUwOH0.NgVhTMAUjR2H4WpBTDSo-4_7hCpxO4WVVmqXPs0-W-4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:1337/api/pages/aaaaaaa-1531368538966",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"pages",
+								"aaaaaaa-1531368538966"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "localhost:1337/api/users/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk0OTMxN2U5LWNkMjQtNDEzMS04MWI1LTk4MTVhNTdmNDMxZSIsImZpcnN0TmFtZSI6IkV6cmEiLCJsYXN0TmFtZSI6IktlZGRlbGwiLCJlbWFpbCI6ImV6cmFrZWRkZWxsQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFNkMjdLdzVlZUZ4aHRwQ1NYUS53b2VIRWlGLnkyMVVyQlhhMzQzcFVaeDdqSnRFZTBrckpTIiwiY3JlYXRlZEF0IjoiMjAxOC0wNy0wMlQwMDozNjoyNi45NDVaIiwidXBkYXRlZEF0IjoiMjAxOC0wNy0wMlQwMDozNjoyNi45NDVaIiwiaWF0IjoxNTMwNTA0MzUxLCJleHAiOjE1MzMwOTYzNTF9.POEkxlxVA3Hq7z6rgDkWJXmTYBjUYv-PZIFbxrAigjw"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "localhost:1337/api/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

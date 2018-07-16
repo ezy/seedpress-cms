@@ -30,23 +30,55 @@ Seedpress is a headless Node JS API server based on Express, built specifically 
 
 ### To run locally
 
-Make sure to install and run PostgreSQL first.
+Make sure to install and run PostgreSQL first. There are a list of package.json
+scripts that include core sequelize migrations and seeds.
+
 ```
 brew update
 brew install postgres
-createdb seedpress_dev
 ```
+Then you'll need to adjust the config file `config/config.json` to suit your setup.
 
-### To run test
+Then run `yarn reset` and your db will create from scratch and seed data under
+the db name `seedpress_dev`.
+
+### Testing
+
+You'll need to setup the test server using `yarn resettest`. Once this has been
+done you can run the server locally with:
 
 ```
 yarn test
 ```
 
-and in another tab
+To trigger the mocha/chai tests enter:
 ```
 yarn test:only
 ```
+
+#### Postman
+
+There is a postman collection file for API testing and development in
+`config/newseed-api.postman_collection.json`. It contains scripts and
+basic CRUD for:
+
+* /auth
+  * [POST] Register (/register)
+  * [POST] Login (/login)
+
+* /posts
+  * [POST] Single post (/ - with auth)
+  * [PATCH] Single post (/:slug - with auth)
+  * [DEL] Single post (/:slug - with auth)
+  * [GET] All posts (/)
+  * [GET] Single post (/:slug)
+
+* /pages
+  * [POST] Single page (/ - with auth)
+  * [PATCH] Single page (/:slug - with auth)
+  * [DEL] Single page (/:slug - with auth)
+  * [GET] All pages (/)
+  * [GET] Single page (/:slug)
 
 ### To deploy on Heroku
 ```
@@ -55,10 +87,9 @@ heroku create
 git push heroku master
 ```
 
-#### Side Note
+#### Sequelize ORM
 
-With `sequelize-cli`
-```
-./node_modules/.bin/sequelize init
-```
-will create model setup and edit `./config/config.json` for your database.
+Seedpress uses Sequelise ORM to make interacting with Postgres. Install globally
+on your dev machine using `yarn global sequelize-cli` then run commands with
+`sequelize-cli` or alternately run commands locally in your dev folder with the
+built in dev package `./node_modules/.bin/sequelize init`.
