@@ -66,7 +66,6 @@ describe('[POST] /api/posts Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            console.log(res.body);
             postSlug = res.body.post.slug;
             expect(res.body.post).to.be.an('object');
             expect(res.body.post).to.have.all.keys(postKeys);

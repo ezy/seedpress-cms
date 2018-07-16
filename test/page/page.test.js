@@ -16,7 +16,6 @@ describe('[PAGE] /api/pages Testing', () => {
       .get('/api/pages')
       .expect(200)
       .end((err, res) => {
-        console.log(res.body.pages[0]);
         expect(res.body.pages).to.be.an('array');
         expect(res.body.pages[0]).to.have.all.keys(pageKeys);
         // set page id for next test
@@ -26,7 +25,6 @@ describe('[PAGE] /api/pages Testing', () => {
   });
 
   it('should be able to get a single page', (done) => {
-    console.log(pageSlug);
     request(app)
       .get(`/api/pages/${pageSlug}`)
       .expect(200)
