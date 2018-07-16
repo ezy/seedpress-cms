@@ -22,11 +22,11 @@ function saveMedia(req, res) {
       });
   }
 
-  let newMedia = {title,image,text,author,date,category,link,tags,updated,status};
+  let newMedia = {title,image,text,author,date,category,link,updated,status};
 
   Media.create(newMedia)
     .then((media) => {
-      tags.forEach((tag) => {
+      tags.map((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
             media.addMediaTag(tag2);
