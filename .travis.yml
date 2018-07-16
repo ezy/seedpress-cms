@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "8.11"
+matrix:
+  include:
+    - node_js: "9"
+      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
+    - node_js: "10"
+      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
+  allow_failures:
+    # Allow the nightly installs to fail
+    - env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
+sudo: false
+cache:
+  directories:
+    - node_modules
+before_install:
+  # Update Node.js modules
+  - "test ! -d node_modules || npm prune"
+  - "test ! -d node_modules || npm rebuild"
+script:
+  - "yarn test-ci"
+  - "yarn lint"
+after_script: "npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
