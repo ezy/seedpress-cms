@@ -16,8 +16,8 @@ before_script:
   - psql -c 'CREATE DATABASE seedpress_test;' -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
   - "yarn"
-  - ./node_modules/.bin/sequelize db:migrate
-  - ./node_modules/.bin/sequelize db:seed:all
+  - sequelize db:migrate
+  - sequelize db:seed:all
 script:
   - "yarn test:only"
   - "yarn lint"

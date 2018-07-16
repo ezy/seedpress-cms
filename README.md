@@ -37,7 +37,7 @@ scripts that include core sequelize migrations and seeds.
 brew update
 brew install postgres
 ```
-Then you'll need to adjust the config file `config/config.json` to suit your setup.
+Then you'll need to adjust the config file `config/config.js` to suit your setup.
 
 Then run `yarn reset` and your db will create from scratch and seed data under
 the db name `seedpress_dev`.
