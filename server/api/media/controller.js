@@ -25,15 +25,16 @@ function saveMedia(req, res) {
   let newMedia = {title,image,text,author,date,category,link,updated,status};
 
   Media.create(newMedia)
-    .then((media) => {
-      mediaTags.map((tag) => {
+    .then((post) => {
+      newMedia = post.dataValues;
+      newMedia.mediaTags = mediaTags;
+      mediaTags.forEach((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
-            media.addMediaTag(tag2);
+            post.addMediaTag(tag2);
           });
       });
-      newMedia.mediaTags = mediaTags;
-      return res.json({'media': newMedia});
+      return res.json({'post': newMedia});
     })
     .catch((err) => res.status(400).send({
       error: err.message
