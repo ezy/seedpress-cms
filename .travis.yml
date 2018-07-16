@@ -3,15 +3,8 @@ node_js:
   - "8.11"
 services:
   - postgresql
-matrix:
-  include:
-    - node_js: "9"
-      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
-    - node_js: "10"
-      env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
-  allow_failures:
-    # Allow the nightly installs to fail
-    - env: "NVM_NODEJS_ORG_MIRROR=https://nodejs.org/download/nightly"
+env:
+  - NODE_ENV=test
 sudo: false
 cache:
   directories:
@@ -21,7 +14,11 @@ before_install:
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
 before_script:
-  - "yarn travistest"
+  - psql -c 'CREATE DATABASE seedpress_test;' -U postgres
+  - psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
+  - "yarn"
+  - sequelize db:migrate
+  - sequelize db:seed:all
 script:
   - "yarn test:only"
   - "yarn lint"
