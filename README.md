@@ -1,4 +1,4 @@
-### Seedpress Express API
+## 🌱 Seedpress Express API
 
 [![Build Status](https://travis-ci.com/ezy/seedpress-cms.svg?branch=master)](https://travis-ci.com/ezy/seedpress-cms)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
