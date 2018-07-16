@@ -11,10 +11,9 @@ function createPost(req, res) {
   const text = req.body.text ? req.body.text.trim() : '';
   const category = req.body.category ? req.body.category.trim() : 'news';
   const date = req.body.date ? req.body.date : new Date();
-  const expires = req.body.expires ? req.body.expires.trim() : '';
+  const expiry = req.body.expiry ? req.body.expiry.trim() : '';
   const frequency = req.body.frequency ? req.body.frequency.trim() : '';
-  const tags = req.body.tags ? req.body.tags : [];
-  const updated = req.body.updated ? req.body.updated : new Date();
+  const postTags = req.body.postTags ? req.body.postTags : [];
   const status = req.body.status ? req.body.status.trim() : '';
 
   if (!title) {
@@ -23,17 +22,18 @@ function createPost(req, res) {
     });
   }
 
-  let newPost = { title,slug,image,text,category,date,expires,frequency,updated,status };
+  let newPost = { title,slug,image,text,category,date,expiry,frequency,status };
 
   Post.create(newPost)
     .then((post) => {
-      tags.forEach((tag) => {
+      postTags.forEach((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
             post.addPostTag(tag2);
           });
       });
-      newPost.tags = tags;
+      newPost = post.dataValues;
+      newPost.postTags = postTags;
       return res.json({'post': newPost});
     })
     .catch((err) => res.status(400).send({

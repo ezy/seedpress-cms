@@ -10,7 +10,7 @@ describe('[POST] /api/posts Testing', () => {
 
   let postSlug = '',
       token = '',
-      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
+      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'postTags', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
 
   it('should be able to get a list of all seeded posts', (done) => {
     request(app)
@@ -66,6 +66,7 @@ describe('[POST] /api/posts Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
+            console.log(res.body);
             postSlug = res.body.post.slug;
             expect(res.body.post).to.be.an('object');
             expect(res.body.post).to.have.all.keys(postKeys);

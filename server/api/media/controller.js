@@ -10,7 +10,7 @@ function saveMedia(req, res) {
   const date = req.body.date ? req.body.date : new Date();
   const category = req.body.category ? req.body.category.trim() : '';
   const link = req.body.link ? req.body.link.trim() : '';
-  const tags = req.body.tags ? req.body.tags : [];
+  const mediaTags = req.body.mediaTags ? req.body.mediaTags : [];
   const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
 
@@ -26,13 +26,13 @@ function saveMedia(req, res) {
 
   Media.create(newMedia)
     .then((media) => {
-      tags.map((tag) => {
+      mediaTags.map((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
             media.addMediaTag(tag2);
           });
       });
-      newMedia.tags = tags;
+      newMedia.mediaTags = mediaTags;
       return res.json({'media': newMedia});
     })
     .catch((err) => res.status(400).send({

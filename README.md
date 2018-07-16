@@ -1,7 +1,6 @@
-### Newseed API
+### Seedpress Express API
 
-This is the express server that will ultimately be hosted on the EC2 instance for
-the production version of Newseed.
+Seedpress is a headless Node JS API server based on Express, built specifically for PostgreSQL using Sequelize ORM. It generally follows the logic and conventions of the Wordpress Page, Post and Media schema eg. Post schema - title, slug, image, category, date, expiry, frequency, status, text. Seedpress authenticates users using JSON web tokens managed by Passport. It's production ready, (although there are still a number of tests to write) and should work as a great starter for any content based API.
 
 * [Node.js](https://nodejs.org/en/)
 * [PostgreSQL](https://www.postgresql.org/)
@@ -11,8 +10,7 @@ the production version of Newseed.
 
 **Hosting**
 
-* AWS EC2
-<!-- * [Heroku](https://www.heroku.com/) -->
+* [Heroku](https://www.heroku.com/)
 
 **Testing**
 
@@ -25,8 +23,9 @@ the production version of Newseed.
 
 * [X] Authentication with JSON Web Token
 * [X] Email, Password validations
-* [X] User signup, signin
+* [X] User login and registration
 * [X] API and Unit testing
+* [X] Page, Post, Media and Tag models
 * [X] Easily deployable to Heroku (Procfile)
 
 ### To run locally
@@ -35,18 +34,18 @@ Make sure to install and run PostgreSQL first.
 ```
 brew update
 brew install postgres
-createdb newseed_dev
+createdb seedpress_dev
 ```
 
 ### To run test
 
 ```
-npm run test
+yarn test
 ```
 
 and in another tab
 ```
-npm run test:only
+yarn test:only
 ```
 
 ### To deploy on Heroku
