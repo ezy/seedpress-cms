@@ -31,7 +31,9 @@ jobs:
       - run:
           name: Setup database
           command: |
-            yarn resettest
+            psql -c "CREATE DATABASE seedpress_test" -U blade
+            ./node_modules/.bin/sequelize db:migrate --env test
+            ./node_modules/.bin/sequelize db:seed:all --env test
 
       - save_cache:
           paths:
