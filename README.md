@@ -47,16 +47,9 @@ the db name `seedpress_dev`.
 
 ### Testing
 
-You'll need to setup the test server using `yarn resettest`. Once this has been
-done you can run the server locally with:
-
+You'll need to setup the test server using `yarn resettest`. To trigger the mocha/chai tests enter:
 ```
 yarn test
-```
-
-To trigger the mocha/chai tests enter:
-```
-yarn test:only
 ```
 
 #### Postman
