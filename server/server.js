@@ -12,7 +12,7 @@ require('./config/middlewares')(app);
 app.use('/api', api);
 app.use('/auth', auth);
 
-app.use((err, req, res/*, next*/) => {
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({ error : err });
 });
