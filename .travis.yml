@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "8.11"
+services:
+  - postgresql
 matrix:
   include:
     - node_js: "9"
@@ -18,7 +20,9 @@ before_install:
   # Update Node.js modules
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
+before_script:
+  - "yarn travistest"
 script:
-  - "yarn test-ci"
+  - "yarn test:only"
   - "yarn lint"
 after_script: "npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
