@@ -26,14 +26,14 @@ function createPost(req, res) {
 
   Post.create(newPost)
     .then((post) => {
+      newPost = post.dataValues;
+      newPost.postTags = postTags;
       postTags.forEach((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
             post.addPostTag(tag2);
           });
       });
-      newPost = post.dataValues;
-      newPost.postTags = postTags;
       return res.json({'post': newPost});
     })
     .catch((err) => res.status(400).send({
