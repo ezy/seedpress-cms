@@ -1,7 +1,7 @@
 {
   "name": "seedpress-api",
   "version": "0.1.0",
-  "description": "Here is the new seed",
+  "description": "A headless CMS built in Express for PostgresQL using Sequelize. Generally follows the Wordpress page, post and media schema.",
   "engines": {
     "node": "^8.*",
     "npm": "^5.6"
@@ -17,11 +17,7 @@
     "droptest": "psql -c 'DROP DATABASE IF EXISTS seedpress_test' && psql -c 'CREATE DATABASE seedpress_test'",
     "resettest": "yarn droptest && ./node_modules/.bin/sequelize db:migrate --env test && ./node_modules/.bin/sequelize db:seed:all --env test",
     "test": "export NODE_ENV=test && nodemon index.js",
-    "test:only": "export NODE_ENV=test &&
-      sequelize db:migrate:undo:all && 
-      sequelize db:migrate &&
-      sequelize db:seed:all &&
-      ./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",
+    "test:only": "export NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all &&./node_modules/.bin/mocha -R spec 'test/**/**.test.js'",
     "coverage": "istanbul cover _mocha -- -R spec 'test/**/**/**/**test.js'"
   },
   "author": "Ezra Keddell",
