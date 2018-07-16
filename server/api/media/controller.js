@@ -1,11 +1,12 @@
 const Media = require('../../../models').Media;
+const Tag = require('../../../models').Tag;
 
 // Register new media
 function saveMedia(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
-  const speaker = req.body.speaker ? req.body.speaker.trim() : '';
+  const author = req.body.author ? req.body.author.trim() : '';
   const date = req.body.date ? req.body.date : new Date();
   const category = req.body.category ? req.body.category.trim() : '';
   const link = req.body.link ? req.body.link.trim() : '';
@@ -21,35 +22,33 @@ function saveMedia(req, res) {
       });
   }
 
-  // Check if title already exists
-  Media.findAll({where: {title}})
-    .then((mediaRes) => {
-      if (mediaRes.length > 0) {
-        return res
-          .status(400)
-          .send({
-            error: 'The media has already been created'
+  const newMedia = {title,image,text,author,date,category,link,tags,updated,status};
+
+  Media.create(newMedia)
+    .then((media) => {
+      tags.forEach((tag) => {
+        Tag.findOrCreate({where: { name: tag.name }})
+          .spread((tag2) => {
+            media.addMediaTag(tag2);
           });
-      }
-
-      const newMedia = {title,image,text,speaker,date,category,link,tags,updated,status};
-
-      Media.create(newMedia)
-        .then((media) => {
-          return res.json({media});
-        })
-        .catch((err) => res.status(400).send({
-          error: err.message
-        }));
+      });
+      return res.json({media,tags});
     })
     .catch((err) => res.status(400).send({
       error: err.message
     }));
 }
 
-// Get all posts
+// Get all medias
 function getAllMedia(req, res) {
-  Media.findAll()
+  Media.findAll({ include: [{
+        model: Tag,
+        as: 'mediaTags',
+        required: false,
+        attributes: ['id','name'],
+        through: { attributes: [] }
+      }]
+    })
     .then((media) => {
       return res.json(media);
     })
@@ -60,7 +59,14 @@ function getAllMedia(req, res) {
 
 // Get one media
 function getMedia(req, res) {
-  Media.findById(req.params.id)
+  Media.findById(req.params.id, { include: [{
+        model: Tag,
+        as: 'mediaTags',
+        required: false,
+        attributes: ['id','name'],
+        through: { attributes: [] }
+      }]
+    })
     .then((media) => {
       if (!media || media.title.length <= 0) {
         return res.status(400).send({

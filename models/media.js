@@ -11,13 +11,17 @@ module.exports = (sequelize, DataTypes) => {
     date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     image: DataTypes.STRING,
     text: DataTypes.TEXT,
-    speaker: DataTypes.STRING,
+    author: DataTypes.STRING,
     category: { type: DataTypes.STRING, defaultValue: 'news' },
     link: DataTypes.STRING,
     status: DataTypes.STRING
   }, {});
   Media.associate = function(models) {
-    Media.hasMany(models.Tag, { as: 'tags', foreignKey: 'id' });
+    Media.belongsToMany(models.Tag, {
+      through: 'MediaTags',
+      as: 'mediaTags',
+      foreignKey: 'mediaId'
+    });
   };
   return Media;
 };

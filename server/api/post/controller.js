@@ -30,7 +30,7 @@ function createPost(req, res) {
       tags.forEach((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
-            post.addTag(tag2);
+            post.addPostTag(tag2);
           });
       });
       return res.json({post,tags});
@@ -44,7 +44,7 @@ function createPost(req, res) {
 function getAllPosts(req, res) {
   Post.findAll({ include: [{
         model: Tag,
-        as: 'tags',
+        as: 'postTags',
         required: false,
         attributes: ['id','name'],
         through: { attributes: [] }
@@ -61,7 +61,14 @@ function getAllPosts(req, res) {
 // Get one post
 function getPost(req, res) {
   const slug = req.params.slug;
-  Post.findOne({where: { slug }, include: [{model: Tag, as: 'tags'}]})
+  Post.findOne({where: { slug }, include: [{
+        model: Tag,
+        as: 'postTags',
+        required: false,
+        attributes: ['id','name'],
+        through: { attributes: [] }
+      }]
+    })
     .then((post) => {
       if (!post) {
         return res.status(400).send({

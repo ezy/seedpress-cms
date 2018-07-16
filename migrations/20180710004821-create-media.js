@@ -13,7 +13,7 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      speaker: {
+      author: {
         type: Sequelize.STRING
       },
       category: {
