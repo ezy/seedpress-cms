@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: ["error", { "args": "none" }] */
+
 const express = require('express');
 
 const app = express();
