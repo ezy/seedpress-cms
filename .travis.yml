@@ -12,14 +12,14 @@ before_install:
   # Update Node.js modules
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
+install:
+  - npm install
 before_script:
   - psql -c 'CREATE DATABASE seedpress_test;' -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
-  - "yarn"
-  - "yarn global sequelize-cli"
   - sequelize db:migrate
   - sequelize db:seed:all
 script:
-  - "yarn test:only"
-  - "yarn lint"
-after_script: "npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
+  - "npm run test:only"
+  - "npm run lint"
+after_script: "yarn global coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
