@@ -12,7 +12,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/postgres:10.4-alpine-postgis
+      - image: circleci/postgres:10.4
 
     steps:
       - checkout
@@ -21,8 +21,17 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn install
-      - run: yarn resettest
+
+      - run:
+          name: Installing dependencies
+          command: |
+            yarn install
+            sudo apt-get install postgresql-client
+
+      - run:
+          name: Setup database
+          command: |
+            yarn resettest
 
       - save_cache:
           paths:
