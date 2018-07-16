@@ -5,7 +5,6 @@ services:
   - postgresql
 env:
   - NODE_ENV=test
-sudo: false
 cache:
   directories:
     - node_modules
