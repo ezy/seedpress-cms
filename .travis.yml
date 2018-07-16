@@ -20,6 +20,6 @@ before_script:
   - sequelize db:migrate
   - sequelize db:seed:all
 script:
-  - "npm run test:only"
+  - "npm run test"
   - "npm run lint"
 after_script: "npm -i coveralls@3.0.2 && cat ./coverage/lcov.info | coveralls"
