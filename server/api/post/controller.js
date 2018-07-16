@@ -23,24 +23,17 @@ function createPost(req, res) {
     });
   }
 
-  // Check if title already exists
-  Post.findOne({ where: { slug }})
-    .then((postRes) => {
-      if (postRes) {
-        return res.status(409).send({
-          error: 'The page has already been created'
-        });
-      }
+  const newPost = { title,slug,image,text,category,date,expires,frequency,updated,status };
 
-      const newPost = { title,slug,image,text,category,date,expires,frequency,tags,updated,status };
-
-      Post.create(newPost, { include: [{model: Tag, as:'tags'}] })
-        .then((post) => {
-          return res.json({post});
-        })
-        .catch((err) => res.status(400).send({
-          error: err.message
-        }));
+  Post.create(newPost)
+    .then((post) => {
+      tags.forEach((tag) => {
+        Tag.findOrCreate({where: { name: tag.name }})
+          .spread((tag2) => {
+            post.addTag(tag2);
+          });
+      });
+      return res.json({post,tags});
     })
     .catch((err) => res.status(400).send({
       error: err.message

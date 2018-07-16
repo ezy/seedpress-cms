@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
-    name: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {});
   Tag.associate = (models) => {
     Tag.belongsToMany(models.Post, {
