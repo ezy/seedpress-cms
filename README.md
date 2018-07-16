@@ -87,5 +87,5 @@ git push heroku master
 
 Seedpress uses Sequelise ORM to interact with Postgres. Install globally
 on your dev machine using `yarn global sequelize-cli` then run commands with
-`sequelize-cli` or alternately run commands locally in your dev folder with the
+`sequelize` or alternately run commands locally in your dev folder with the
 built in dev package `./node_modules/.bin/sequelize init`.
