@@ -22,4 +22,4 @@ before_script:
 script:
   - "npm run test:only"
   - "npm run lint"
-after_script: "yarn global coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
+after_script: "npm -i coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls"
