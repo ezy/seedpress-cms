@@ -23,7 +23,7 @@ function createPost(req, res) {
     });
   }
 
-  const newPost = { title,slug,image,text,category,date,expires,frequency,updated,status };
+  let newPost = { title,slug,image,text,category,date,expires,frequency,updated,status };
 
   Post.create(newPost)
     .then((post) => {
@@ -33,7 +33,8 @@ function createPost(req, res) {
             post.addPostTag(tag2);
           });
       });
-      return res.json({post,tags});
+      newPost.tags = tags;
+      return res.json({'post': newPost});
     })
     .catch((err) => res.status(400).send({
       error: err.message

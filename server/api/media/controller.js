@@ -22,7 +22,7 @@ function saveMedia(req, res) {
       });
   }
 
-  const newMedia = {title,image,text,author,date,category,link,tags,updated,status};
+  let newMedia = {title,image,text,author,date,category,link,tags,updated,status};
 
   Media.create(newMedia)
     .then((media) => {
@@ -32,7 +32,8 @@ function saveMedia(req, res) {
             media.addMediaTag(tag2);
           });
       });
-      return res.json({media,tags});
+      newMedia.tags = tags;
+      return res.json({'media': newMedia});
     })
     .catch((err) => res.status(400).send({
       error: err.message
