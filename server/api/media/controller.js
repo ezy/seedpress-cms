@@ -27,13 +27,13 @@ function saveMedium(req, res) {
   let newMedia = {title,slug,image,text,author,date,category,link,status};
 
   Media.create(newMedia)
-    .then((post) => {
-      newMedia = post.dataValues;
+    .then((medium) => {
+      newMedia = medium.dataValues;
       newMedia.mediaTags = mediaTags;
       mediaTags.forEach((tag) => {
         Tag.findOrCreate({where: { name: tag.name }})
           .spread((tag2) => {
-            post.addMediaTag(tag2);
+            medium.addMediaTag(tag2);
           });
       });
       return res.json({'medium': newMedia});

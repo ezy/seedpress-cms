@@ -10,7 +10,7 @@ describe('[POST] /api/media Testing', () => {
 
   let mediumSlug = '',
       token = '',
-      mediumKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'mediumTags', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
+      mediumKeys = ['id', 'title', 'author', 'link', 'slug', 'category', 'image', 'date', 'mediaTags', 'createdAt', 'status', 'text', 'updatedAt'];
 
   it('should be able to get a list of all seeded media', (done) => {
     request(app)
@@ -38,7 +38,7 @@ describe('[POST] /api/media Testing', () => {
 
   it('should be able to create and delete medium if logged in', (done) => {
     request(app)
-      .medium('/auth/login')
+      .post('/auth/login')
       .send({
         email: 'user@email.com',
         password: 'passwrod'
@@ -50,16 +50,17 @@ describe('[POST] /api/media Testing', () => {
         token = res.body.token;
         title = faker.lorem.sentence(5);
         request(app)
-          .medium(`/api/media`)
+          .post(`/api/media`)
           .send({
+            id: faker.random.uuid(),
             title: title,
             slug: `${changeCase.paramCase(title)}-${Date.now()}`,
             image: faker.image.imageUrl(),
-            category: faker.random.arrayElement(['news', 'event', 'need']),
+            author: faker.name.findName(),
+            category: 'sermon',
             date: new Date(),
-            expiry: faker.date.future(),
-            status: faker.random.arrayElement(['published', 'draft']),
-            text: faker.lorem.text()
+            status: faker.random.arrayElement(['published','draft']),
+            text: faker.lorem.text(),
           })
           .set('Authorization', `Bearer ${token}`)
           .set('Accept', 'application/json')

@@ -9,7 +9,7 @@ const changeCase = require('change-case');
 describe('[PAGE] /api/pages Testing', () => {
   let pageSlug = '',
       token = '',
-      pageKeys = ['title','slug','image','text','author','date','category','link','updatedAt','status'];
+      pageKeys = ['id','title','slug','image','text','slide','status','createdAt','updatedAt'];
 
   it('should be able to get a list of all seeded pages', (done) => {
     request(app)
