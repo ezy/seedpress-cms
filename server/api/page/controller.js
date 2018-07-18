@@ -9,7 +9,6 @@ function createPage(req, res) {
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
   const slide = req.body.slide ? req.body.slide.trim() : '';
-  const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
 
   if (!title) {
@@ -29,7 +28,7 @@ function createPage(req, res) {
         });
       }
 
-      const newPage = { title,slug,image,text,slide,updated,status };
+      const newPage = { title,slug,image,text,slide,status };
 
       Page.create(newPage)
         .then((page) => {

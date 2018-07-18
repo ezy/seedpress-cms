@@ -6,38 +6,39 @@ const expect = require('chai').expect;
 const faker = require('faker');
 const changeCase = require('change-case');
 
-describe('[PAGE] /api/pages Testing', () => {
-  let pageSlug = '',
+describe('[POST] /api/media Testing', () => {
+
+  let mediumSlug = '',
       token = '',
-      pageKeys = ['title','slug','image','text','author','date','category','link','updatedAt','status'];
+      mediumKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'mediumTags', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
 
-  it('should be able to get a list of all seeded pages', (done) => {
+  it('should be able to get a list of all seeded media', (done) => {
     request(app)
-      .get('/api/pages')
+      .get('/api/media')
       .expect(200)
       .end((err, res) => {
-        expect(res.body.pages).to.be.an('array');
-        expect(res.body.pages[0]).to.have.all.keys(pageKeys);
-        // set page id for next test
-        pageSlug = res.body.pages[0].slug;
+        expect(res.body.media).to.be.an('array');
+        expect(res.body.media[0]).to.have.all.keys(mediumKeys);
+        // set medium id for next test
+        mediumSlug = res.body.media[0].slug;
         done();
       });
   });
 
-  it('should be able to get a single page', (done) => {
+  it('should be able to get a single medium', (done) => {
     request(app)
-      .get(`/api/pages/${pageSlug}`)
+      .get(`/api/media/${mediumSlug}`)
       .expect(200)
       .end((err, res) => {
-        expect(res.body.page).to.be.an('object');
-        expect(res.body.page).to.have.all.keys(pageKeys);
+        expect(res.body.medium).to.be.an('object');
+        expect(res.body.medium).to.have.all.keys(mediumKeys);
         done();
       });
   });
 
-  it('should be able to create and delete page if logged in', (done) => {
+  it('should be able to create and delete medium if logged in', (done) => {
     request(app)
-      .post('/auth/login')
+      .medium('/auth/login')
       .send({
         email: 'user@email.com',
         password: 'passwrod'
@@ -49,7 +50,7 @@ describe('[PAGE] /api/pages Testing', () => {
         token = res.body.token;
         title = faker.lorem.sentence(5);
         request(app)
-          .post(`/api/pages`)
+          .medium(`/api/media`)
           .send({
             title: title,
             slug: `${changeCase.paramCase(title)}-${Date.now()}`,
@@ -65,11 +66,11 @@ describe('[PAGE] /api/pages Testing', () => {
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            pageSlug = res.body.page.slug;
-            expect(res.body.page).to.be.an('object');
-            expect(res.body.page).to.have.all.keys(pageKeys);
+            mediumSlug = res.body.medium.slug;
+            expect(res.body.medium).to.be.an('object');
+            expect(res.body.medium).to.have.all.keys(mediumKeys);
             request(app)
-              .delete(`/api/pages/${pageSlug}`)
+              .delete(`/api/media/${mediumSlug}`)
               .set('Authorization', `Bearer ${token}`)
               .set('Accept', 'application/json')
               .expect('Content-Type', /json/)

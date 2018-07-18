@@ -16,6 +16,9 @@ module.exports = {
       author: {
         type: Sequelize.STRING
       },
+      slug: {
+        type: Sequelize.STRING
+      },
       category: {
         type: Sequelize.STRING
       },

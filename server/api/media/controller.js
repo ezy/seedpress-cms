@@ -1,9 +1,12 @@
 const Media = require('../../../models').Media;
 const Tag = require('../../../models').Tag;
+const changeCase = require('change-case');
 
 // Register new media
-function saveMedia(req, res) {
+function saveMedium(req, res) {
   const title = req.body.title ? req.body.title.trim() : '';
+  let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
+
   const image = req.body.image ? req.body.image.trim() : '';
   const text = req.body.text ? req.body.text.trim() : '';
   const author = req.body.author ? req.body.author.trim() : '';
@@ -11,7 +14,6 @@ function saveMedia(req, res) {
   const category = req.body.category ? req.body.category.trim() : '';
   const link = req.body.link ? req.body.link.trim() : '';
   const mediaTags = req.body.mediaTags ? req.body.mediaTags : [];
-  const updated = req.body.updated ? req.body.updated : new Date();
   const status = req.body.status ? req.body.status.trim() : '';
 
   if (!title) {
@@ -22,7 +24,7 @@ function saveMedia(req, res) {
       });
   }
 
-  let newMedia = {title,image,text,author,date,category,link,updated,status};
+  let newMedia = {title,slug,image,text,author,date,category,link,status};
 
   Media.create(newMedia)
     .then((post) => {
@@ -34,7 +36,7 @@ function saveMedia(req, res) {
             post.addMediaTag(tag2);
           });
       });
-      return res.json({'post': newMedia});
+      return res.json({'medium': newMedia});
     })
     .catch((err) => res.status(400).send({
       error: err.message
@@ -52,29 +54,6 @@ function getAllMedia(req, res) {
       }]
     })
     .then((media) => {
-      return res.json(media);
-    })
-    .catch((err) => res.status(400).send({
-      error: err.message
-    }));
-}
-
-// Get one media
-function getMedia(req, res) {
-  Media.findById(req.params.id, { include: [{
-        model: Tag,
-        as: 'mediaTags',
-        required: false,
-        attributes: ['id','name'],
-        through: { attributes: [] }
-      }]
-    })
-    .then((media) => {
-      if (!media || media.title.length <= 0) {
-        return res.status(400).send({
-          error: 'No media found'
-        });
-      }
       return res.json({media});
     })
     .catch((err) => res.status(400).send({
@@ -82,8 +61,79 @@ function getMedia(req, res) {
     }));
 }
 
+// Get one media
+function getMedium(req, res) {
+  const slug = req.params.slug;
+  Media.findOne({where: { slug }, include: [{
+        model: Tag,
+        as: 'mediaTags',
+        required: false,
+        attributes: ['id','name'],
+        through: { attributes: [] }
+      }]
+    })
+    .then((medium) => {
+      if (!medium || medium.title.length <= 0) {
+        return res.status(400).send({
+          error: 'No media found'
+        });
+      }
+      return res.json({medium});
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
+// Update existing media
+function updateMedium(req, res) {
+
+  const slug = req.params.slug;
+
+  Media.findOne({where: { slug }})
+    .then((medium) => {
+      if (!medium) {
+        return res.status(404).send({
+          error: 'No media found'
+        });
+      }
+
+      // Change the slug if the title is different
+      let newTitle = changeCase.paramCase(req.body.title);
+      if (!medium.dataValues.slug.includes(newTitle)) {
+        req.body.slug = `${newTitle}-${Date.now()}`;
+      }
+      return medium.updateAttributes(req.body);
+    })
+    .then((updatedMedia) => {
+      res.json({medium: updatedMedia});
+    })
+    .catch((err) => res.status(400).send({
+      error: err.message
+    }));
+}
+
+// Delete one media
+function deleteMedium(req, res) {
+  const slug = req.params.slug;
+  Media.findOne({where: { slug }})
+  .then((media) => {
+    media.destroy()
+      .then(() => {
+        res.status(200).send({
+          success: 'Media successfully deleted.'
+        });
+      });
+  })
+  .catch((err) => res.status(400).send({
+    error: err.message
+  }));
+}
+
 module.exports = {
-  saveMedia,
+  saveMedium,
   getAllMedia,
-  getMedia
+  getMedium,
+  updateMedium,
+  deleteMedium
 };

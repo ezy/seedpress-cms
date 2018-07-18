@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
+    slug: { type:DataTypes.STRING, allowNull: false },
     title: DataTypes.STRING,
     date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     image: DataTypes.STRING,
