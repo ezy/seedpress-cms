@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     slide: DataTypes.INTEGER,
     status: DataTypes.STRING,
     slug: DataTypes.STRING,
-    text: DataTypes.TEXT,
+    content: DataTypes.TEXT,
     title: DataTypes.STRING
   }, {});
   return Page;

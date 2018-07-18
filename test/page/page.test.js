@@ -9,7 +9,7 @@ const changeCase = require('change-case');
 describe('[PAGE] /api/pages Testing', () => {
   let pageSlug = '',
       token = '',
-      pageKeys = ['id','title','slug','image','text','slide','status','createdAt','updatedAt'];
+      pageKeys = ['id','title','slug','image','content','slide','status','createdAt','updatedAt'];
 
   it('should be able to get a list of all seeded pages', (done) => {
     request(app)
@@ -58,7 +58,7 @@ describe('[PAGE] /api/pages Testing', () => {
             date: new Date(),
             expiry: faker.date.future(),
             status: faker.random.arrayElement(['published', 'draft']),
-            text: faker.lorem.text()
+            content: faker.lorem.text()
           })
           .set('Authorization', `Bearer ${token}`)
           .set('Accept', 'application/json')

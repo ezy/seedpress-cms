@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     expiry: DataTypes.DATE,
     frequency: DataTypes.STRING,
     status: DataTypes.STRING,
-    text: DataTypes.TEXT
+    content: DataTypes.TEXT
   }, {});
   Post.associate = (models) => {
     Post.belongsToMany(models.Tag, {

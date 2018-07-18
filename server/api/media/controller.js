@@ -8,7 +8,7 @@ function saveMedium(req, res) {
   let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
 
   const image = req.body.image ? req.body.image.trim() : '';
-  const text = req.body.text ? req.body.text.trim() : '';
+  const content = req.body.content ? req.body.content.trim() : '';
   const author = req.body.author ? req.body.author.trim() : '';
   const date = req.body.date ? req.body.date : new Date();
   const category = req.body.category ? req.body.category.trim() : '';
@@ -24,7 +24,7 @@ function saveMedium(req, res) {
       });
   }
 
-  let newMedia = {title,slug,image,text,author,date,category,link,status};
+  let newMedia = {title,slug,image,content,author,date,category,link,status};
 
   Media.create(newMedia)
     .then((medium) => {

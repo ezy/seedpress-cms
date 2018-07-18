@@ -10,7 +10,7 @@ describe('[POST] /api/posts Testing', () => {
 
   let postSlug = '',
       token = '',
-      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'postTags', 'frequency', 'createdAt', 'status', 'text', 'updatedAt'];
+      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'postTags', 'frequency', 'createdAt', 'status', 'content', 'updatedAt'];
 
   it('should be able to get a list of all seeded posts', (done) => {
     request(app)
@@ -59,7 +59,7 @@ describe('[POST] /api/posts Testing', () => {
             date: new Date(),
             expiry: faker.date.future(),
             status: faker.random.arrayElement(['published', 'draft']),
-            text: faker.lorem.text()
+            content: faker.lorem.text()
           })
           .set('Authorization', `Bearer ${token}`)
           .set('Accept', 'application/json')

@@ -10,7 +10,7 @@ describe('[POST] /api/media Testing', () => {
 
   let mediumSlug = '',
       token = '',
-      mediumKeys = ['id', 'title', 'author', 'link', 'slug', 'category', 'image', 'date', 'mediaTags', 'createdAt', 'status', 'text', 'updatedAt'];
+      mediumKeys = ['id', 'title', 'author', 'link', 'slug', 'category', 'image', 'date', 'mediaTags', 'createdAt', 'status', 'content', 'updatedAt'];
 
   it('should be able to get a list of all seeded media', (done) => {
     request(app)
@@ -60,7 +60,7 @@ describe('[POST] /api/media Testing', () => {
             category: 'sermon',
             date: new Date(),
             status: faker.random.arrayElement(['published','draft']),
-            text: faker.lorem.text(),
+            content: faker.lorem.text(),
           })
           .set('Authorization', `Bearer ${token}`)
           .set('Accept', 'application/json')

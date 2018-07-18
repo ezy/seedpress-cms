@@ -14,7 +14,7 @@ for (let i = 0; i < 6; i++) {
     date: new Date(),
     expiry: faker.date.future(),
     status: faker.random.arrayElement(['published','draft']),
-    text: faker.lorem.text(),
+    content: faker.lorem.text(),
     createdAt: new Date(),
     updatedAt: new Date()
   };

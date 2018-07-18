@@ -12,7 +12,7 @@ for (let i = 0; i < 6; i++) {
     image: faker.image.imageUrl(),
     status: faker.random.arrayElement(['published','draft']),
     slide: faker.random.arrayElement(['0','1']),
-    text: faker.lorem.text(),
+    content: faker.lorem.text(),
     createdAt: new Date(),
     updatedAt: new Date()
   };

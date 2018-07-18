@@ -44,11 +44,11 @@ function validatePassword(password) {
   return errorMessages;
 }
 
-function validateStringLength(text, limit) {
+function validateStringLength(content, limit) {
   let errorMessage = '';
-  if (text.trim().length > limit) {
+  if (content.trim().length > limit) {
     errorMessage = `* Cannot be more than ${limit} characters`;
-  } else if (text.trim().length <= 0) {
+  } else if (content.trim().length <= 0) {
     errorMessage = '* Cannot be empty';
   } else {
     errorMessage = '';

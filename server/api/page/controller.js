@@ -7,7 +7,7 @@ function createPage(req, res) {
   let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
 
   const image = req.body.image ? req.body.image.trim() : '';
-  const text = req.body.text ? req.body.text.trim() : '';
+  const content = req.body.content ? req.body.content.trim() : '';
   const slide = req.body.slide ? req.body.slide.trim() : '';
   const status = req.body.status ? req.body.status.trim() : '';
 
@@ -28,7 +28,7 @@ function createPage(req, res) {
         });
       }
 
-      const newPage = { title,slug,image,text,slide,status };
+      const newPage = { title,slug,image,content,slide,status };
 
       Page.create(newPage)
         .then((page) => {

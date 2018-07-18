@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     image: DataTypes.STRING,
-    text: DataTypes.TEXT,
+    content: DataTypes.TEXT,
     author: DataTypes.STRING,
     category: { type: DataTypes.STRING, defaultValue: 'news' },
     link: DataTypes.STRING,

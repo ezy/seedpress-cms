@@ -8,7 +8,7 @@ function createPost(req, res) {
   let slug = `${changeCase.paramCase(title)}-${Date.now()}`;
 
   const image = req.body.image ? req.body.image.trim() : '';
-  const text = req.body.text ? req.body.text.trim() : '';
+  const content = req.body.content ? req.body.content.trim() : '';
   const category = req.body.category ? req.body.category.trim() : 'news';
   const date = req.body.date ? req.body.date : new Date();
   const expiry = req.body.expiry ? req.body.expiry.trim() : '';
@@ -22,7 +22,7 @@ function createPost(req, res) {
     });
   }
 
-  let newPost = { title,slug,image,text,category,date,expiry,frequency,status };
+  let newPost = { title,slug,image,content,category,date,expiry,frequency,status };
 
   Post.create(newPost)
     .then((post) => {
