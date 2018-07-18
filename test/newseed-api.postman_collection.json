@@ -37,7 +37,7 @@
 					},
 					"response": [
 						{
-							"id": "460f215e-40a0-4dfe-811e-abc661535124",
+							"id": "a2c375a5-9af4-4d2e-80f9-b46c038c3742",
 							"name": "localhost: 1337/auth/register",
 							"originalRequest": {
 								"method": "POST",
@@ -180,7 +180,7 @@
 					},
 					"response": [
 						{
-							"id": "723dc0e6-309a-4560-b8be-49894733143e",
+							"id": "8ab70c41-48fd-46b7-bea9-1320361cb1a6",
 							"name": "localhost: 1337/auth/login/",
 							"originalRequest": {
 								"method": "POST",
@@ -333,7 +333,7 @@
 					},
 					"response": [
 						{
-							"id": "54aff5e3-1440-4433-89de-e2fb36630c86",
+							"id": "68d29eb0-3458-491f-a24f-239f80ed7189",
 							"name": "localhost:1337/api/posts",
 							"originalRequest": {
 								"method": "POST",
@@ -473,7 +473,7 @@
 					},
 					"response": [
 						{
-							"id": "0096eb97-648d-46bb-bfed-e5221a8ce44c",
+							"id": "fa97e5ed-01b3-4780-b981-ea543c2fa7ba",
 							"name": "localhost:1337/api/posts",
 							"originalRequest": {
 								"method": "GET",
@@ -606,7 +606,7 @@
 					},
 					"response": [
 						{
-							"id": "d76718f7-f0dd-4bd1-a4db-5c96938b157b",
+							"id": "9ec66b73-b3d8-4556-b435-d54ba6f5e88c",
 							"name": "localhost:1337/api/posts/get-single",
 							"originalRequest": {
 								"method": "GET",
@@ -746,7 +746,7 @@
 					},
 					"response": [
 						{
-							"id": "184c87d6-0e58-412c-aaae-927748215c6c",
+							"id": "9a9ce2a7-30cd-4390-8354-c74cdade199b",
 							"name": "localhost:1337/api/posts/update",
 							"originalRequest": {
 								"method": "PATCH",
@@ -900,7 +900,7 @@
 					},
 					"response": [
 						{
-							"id": "5c3868ce-29cc-4cbe-b47e-2d005c57a8dc",
+							"id": "e3292be1-c2ae-492f-924d-48a76b22ceaf",
 							"name": "localhost:1337/api/posts-delete",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1024,6 +1024,730 @@
 			]
 		},
 		{
+			"name": "media",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:1337/api/media",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjZjc5YjZjLWMyZGEtNDczYS1iNjhkLTM4ODcwYzY4OTUzYiIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkT3FHdndtdE04UkdmZHIxQkl4bHk3ZUtVZ1pud0ZMS0dFb1RtZWhVWk5yQi9meG9GTVlKS0MiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJpYXQiOjE1MzE2OTUwNzMsImV4cCI6MTUzNDI4NzA3M30.YAk0W_AOZCqEZNgVgeOl1d1Qhc00XGWnqIyLO8cXR4g"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"medias\",\"date\": \"2018-07-02T00:36:26.371Z\",\"author\":\"Percy Hathelthwaite\",\"status\": \"published\",\"text\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"link\":\"http://url.com\",\"mediaTags\":[{\"name\":\"one\"},{\"name\":\"two\"}]}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/media",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5b62577d-0f2b-4ce9-9200-ab7e7f18e5fc",
+							"name": "localhost:1337/api/media",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZjZjc5YjZjLWMyZGEtNDczYS1iNjhkLTM4ODcwYzY4OTUzYiIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkT3FHdndtdE04UkdmZHIxQkl4bHk3ZUtVZ1pud0ZMS0dFb1RtZWhVWk5yQi9meG9GTVlKS0MiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTEzVDA0OjUyOjU5LjA4N1oiLCJpYXQiOjE1MzE2OTUwNzMsImV4cCI6MTUzNDI4NzA3M30.YAk0W_AOZCqEZNgVgeOl1d1Qhc00XGWnqIyLO8cXR4g",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"title\": \"medias\",\"date\": \"2018-07-02T00:36:26.371Z\",\"author\":\"Percy Hathelthwaite\",\"status\": \"published\",\"text\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"link\":\"http://url.com\",\"mediaTags\":[{\"name\":\"one\"},{\"name\":\"two\"}]}"
+								},
+								"url": {
+									"raw": "localhost:1337/api/media",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"media"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "891",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 22:05:47 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37b-cxH8LemwdA4T+fPYZIaqxn0iTl8\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"medium\":{\"id\":\"68b729fa-2dc5-4fdf-9396-f407b68cef6a\",\"title\":\"medias\",\"slug\":\"medias-1531951547174\",\"image\":\"\",\"text\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"author\":\"Percy Hathelthwaite\",\"date\":\"2018-07-02T00:36:26.371Z\",\"category\":\"\",\"link\":\"http://url.com\",\"status\":\"published\",\"updatedAt\":\"2018-07-18T22:05:47.174Z\",\"createdAt\":\"2018-07-18T22:05:47.174Z\",\"mediaTags\":[{\"name\":\"one\"},{\"name\":\"two\"}]}}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/media",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/media",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e6a114f1-36d1-4eb5-8759-20ac3481bf82",
+							"name": "localhost:1337/api/media",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:1337/api/media",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"media"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 22:02:33 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1083-cbx8Lxuk4o6IEr0GeIwbc2XnX9Q\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"media\":[{\"id\":\"a0ab0702-c4fa-4bd9-8a22-669bfe5479fc\",\"slug\":\"medias-1531951326878\",\"title\":\"medias\",\"date\":\"2018-07-02T00:36:26.371Z\",\"image\":\"\",\"text\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"author\":\"Percy Hathelthwaite\",\"category\":\"\",\"link\":\"http://url.com\",\"status\":\"published\",\"createdAt\":\"2018-07-18T22:02:06.880Z\",\"updatedAt\":\"2018-07-18T22:02:06.880Z\",\"mediaTags\":[{\"id\":\"99f80016-d700-4553-a7bf-5fc66e8baeb5\",\"name\":\"two\"},{\"id\":\"66951e53-d811-45b7-b3f9-8d7359fb4eb0\",\"name\":\"one\"}]},{\"id\":\"e5a34fe9-39f0-4c1b-88c1-b33ac7203597\",\"slug\":\"nisi-quo-assumenda-quis-illo-1531949950405\",\"title\":\"Nisi quo assumenda quis illo.\",\"date\":\"2018-07-18T21:39:10.405Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"et\",\"author\":\"Nona Buckridge\",\"category\":\"event\",\"link\":null,\"status\":\"published\",\"createdAt\":\"2018-07-18T21:39:10.405Z\",\"updatedAt\":\"2018-07-18T21:39:10.405Z\",\"mediaTags\":[]},{\"id\":\"7ab24ee9-09d0-4c4d-8eac-714288d13ec4\",\"slug\":\"hic-ratione-possimus-voluptates-voluptas-1531949950404\",\"title\":\"Hic ratione possimus voluptates voluptas.\",\"date\":\"2018-07-18T21:39:10.404Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"Quia ipsa cumque corrupti eligendi cupiditate. Facilis ex nemo dicta nam consequuntur voluptatem. Non consequatur sed vero velit odit modi libero. Nisi qui ut quaerat consequuntur quia optio nemo.\",\"author\":\"Olga Bergstrom\",\"category\":\"need\",\"link\":null,\"status\":\"published\",\"createdAt\":\"2018-07-18T21:39:10.405Z\",\"updatedAt\":\"2018-07-18T21:39:10.405Z\",\"mediaTags\":[]},{\"id\":\"c3ab4a18-ae51-45bf-9f48-4c676676864c\",\"slug\":\"laborum-animi-et-blanditiis-recusandae-1531949950405\",\"title\":\"Laborum animi et blanditiis recusandae.\",\"date\":\"2018-07-18T21:39:10.405Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"Incidunt magnam officiis autem voluptatum aut odit quia. Aspernatur cupiditate numquam aut eos sapiente nobis ea. Optio quidem tenetur voluptas facere vel repellendus.\",\"author\":\"Novella Kunze Sr.\",\"category\":\"news\",\"link\":null,\"status\":\"draft\",\"createdAt\":\"2018-07-18T21:39:10.405Z\",\"updatedAt\":\"2018-07-18T21:39:10.405Z\",\"mediaTags\":[]},{\"id\":\"c97b952a-331a-447e-b517-8b143f7efdfd\",\"slug\":\"reiciendis-esse-accusamus-blanditiis-in-1531949950405\",\"title\":\"Reiciendis esse accusamus blanditiis in.\",\"date\":\"2018-07-18T21:39:10.405Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"Nostrum ut culpa voluptatibus quasi provident aut officiis officiis. Minima facere eum aut sunt beatae a. Facere ut repellat delectus et quibusdam qui sapiente praesentium. Cumque aut est molestiae.\",\"author\":\"Dr. Tillman Heller\",\"category\":\"news\",\"link\":null,\"status\":\"published\",\"createdAt\":\"2018-07-18T21:39:10.405Z\",\"updatedAt\":\"2018-07-18T21:39:10.405Z\",\"mediaTags\":[]},{\"id\":\"684b3767-7854-47e6-a05c-55bae368e4f5\",\"slug\":\"ut-aut-incidunt-labore-ullam-1531949950404\",\"title\":\"Ut aut incidunt labore ullam.\",\"date\":\"2018-07-18T21:39:10.404Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"Commodi perspiciatis architecto ut officiis.\",\"author\":\"Elsie Collier\",\"category\":\"news\",\"link\":null,\"status\":\"published\",\"createdAt\":\"2018-07-18T21:39:10.404Z\",\"updatedAt\":\"2018-07-18T21:39:10.404Z\",\"mediaTags\":[]},{\"id\":\"d6adae0f-f3c2-43b0-803b-e914f90dc86e\",\"slug\":\"doloribus-enim-sed-excepturi-sint-1531949950405\",\"title\":\"Doloribus enim sed excepturi sint.\",\"date\":\"2018-07-18T21:39:10.405Z\",\"image\":\"http://lorempixel.com/640/480\",\"text\":\"Odit ipsam maiores dolorem explicabo. Reiciendis laborum vel quasi voluptatem tenetur iusto voluptatem vero. Sit ex tempore dolor. Praesentium porro non recusandae tempora. Aut ut corporis non facere unde nihil.\",\"author\":\"Kari D'Amore\",\"category\":\"need\",\"link\":null,\"status\":\"published\",\"createdAt\":\"2018-07-18T21:39:10.405Z\",\"updatedAt\":\"2018-07-18T21:39:10.405Z\",\"mediaTags\":[]}]}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/media/get-single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/media/medias-1531951547174",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"media",
+								"medias-1531951547174"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "31bdb8a7-e77a-41cf-8f12-9e7a6fdd7957",
+							"name": "localhost:1337/api/media/get-single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:1337/api/media/medias-1531951547174",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"media",
+										"medias-1531951547174"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "979",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 22:06:10 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d3-zbYHCUTjgqNuS0UBp5EyOxDPc1A\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"medium\":{\"id\":\"68b729fa-2dc5-4fdf-9396-f407b68cef6a\",\"slug\":\"medias-1531951547174\",\"title\":\"medias\",\"date\":\"2018-07-02T00:36:26.371Z\",\"image\":\"\",\"text\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"author\":\"Percy Hathelthwaite\",\"category\":\"\",\"link\":\"http://url.com\",\"status\":\"published\",\"createdAt\":\"2018-07-18T22:05:47.174Z\",\"updatedAt\":\"2018-07-18T22:05:47.174Z\",\"mediaTags\":[{\"id\":\"66951e53-d811-45b7-b3f9-8d7359fb4eb0\",\"name\":\"one\"},{\"id\":\"99f80016-d700-4553-a7bf-5fc66e8baeb5\",\"name\":\"two\"}]}}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/media/update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhM2JiOWYyLWE1NjEtNDAyNC1iNjA1LWQ3ZDVjNGNjMzUxMSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkODdZQVU5TzZELi5rVFRNTkk3WXRodTdFLzVUc25SZ1cwZDVhSjU2Rk9vS2VVdDIvSUFqN0siLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJpYXQiOjE1MzEzNTAxODEsImV4cCI6MTUzMzk0MjE4MX0.JdAiMrRf_HQW36BN2GkSaGXRy0deVeovdELF6In1_hU"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"A media day\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/media/medias-1531951326878",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"media",
+								"medias-1531951326878"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ca277e69-ff85-4296-b93d-ae4b931c59be",
+							"name": "localhost:1337/api/media/update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhM2JiOWYyLWE1NjEtNDAyNC1iNjA1LWQ3ZDVjNGNjMzUxMSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkODdZQVU5TzZELi5rVFRNTkk3WXRodTdFLzVUc25SZ1cwZDVhSjU2Rk9vS2VVdDIvSUFqN0siLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDIzOjAyOjUxLjM3OFoiLCJpYXQiOjE1MzEzNTAxODEsImV4cCI6MTUzMzk0MjE4MX0.JdAiMrRf_HQW36BN2GkSaGXRy0deVeovdELF6In1_hU"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"title\": \"A media day\"}"
+								},
+								"url": {
+									"raw": "localhost:1337/api/media/medias-1531951326878",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"media",
+										"medias-1531951326878"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "857",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 22:05:01 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"359-k5NoKI+1xCFIXn1pkHDRdIsb8TU\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"medium\":{\"id\":\"a0ab0702-c4fa-4bd9-8a22-669bfe5479fc\",\"slug\":\"a-media-day-1531951501467\",\"title\":\"A media day\",\"date\":\"2018-07-02T00:36:26.371Z\",\"image\":\"\",\"text\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"author\":\"Percy Hathelthwaite\",\"category\":\"\",\"link\":\"http://url.com\",\"status\":\"published\",\"createdAt\":\"2018-07-18T22:02:06.880Z\",\"updatedAt\":\"2018-07-18T22:05:01.468Z\"}}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/media-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiZTMwZTgwLTUzY2UtNDRkOC05MzhlLWFiZDRhYjA5MGM2ZCIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkakVDdXB4cVNxRjZvQ3RyYzZIVnpEZVpDd2dXMVlCaWhnUUZMYjR0a3VaWGUyYUhPTk44aHkiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJpYXQiOjE1MzEyODY1MDgsImV4cCI6MTUzMzg3ODUwOH0.NgVhTMAUjR2H4WpBTDSo-4_7hCpxO4WVVmqXPs0-W-4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:1337/api/media/a-media-day-1531951501467",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"media",
+								"a-media-day-1531951501467"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "891c008c-b98e-4c82-bdb9-91c3ce071d78",
+							"name": "localhost:1337/api/media-delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFiZTMwZTgwLTUzY2UtNDRkOC05MzhlLWFiZDRhYjA5MGM2ZCIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkakVDdXB4cVNxRjZvQ3RyYzZIVnpEZVpDd2dXMVlCaWhnUUZMYjR0a3VaWGUyYUhPTk44aHkiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTExVDA1OjIwOjE4LjYzMVoiLCJpYXQiOjE1MzEyODY1MDgsImV4cCI6MTUzMzg3ODUwOH0.NgVhTMAUjR2H4WpBTDSo-4_7hCpxO4WVVmqXPs0-W-4",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:1337/api/media/a-media-day-1531951501467",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"media",
+										"a-media-day-1531951501467"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 22:07:40 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-7JTY8QIQG1F+noL0g0jLQjzRc50\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":\"Media successfully deleted.\"}"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "tags",
 			"description": "",
 			"item": [
@@ -1047,7 +1771,7 @@
 					},
 					"response": [
 						{
-							"id": "1470efca-a09b-4220-a1d0-ecce2905ac39",
+							"id": "021610e8-a6ca-407e-8e2a-0a58be74c277",
 							"name": "localhost:1337/api/tags",
 							"originalRequest": {
 								"method": "GET",
@@ -1191,7 +1915,7 @@
 					},
 					"response": [
 						{
-							"id": "4907abb1-62d7-48a4-87a8-c85c96af784e",
+							"id": "8932e51b-676d-4bd5-a2e3-96b85fd142a5",
 							"name": "localhost:1337/api/pages",
 							"originalRequest": {
 								"method": "POST",
@@ -1331,7 +2055,7 @@
 					},
 					"response": [
 						{
-							"id": "0f39f60b-44c2-45c2-9ad1-32890c61c1cf",
+							"id": "215de68b-a02b-44c2-b608-fd9bdb36b171",
 							"name": "localhost:1337/api/pages",
 							"originalRequest": {
 								"method": "GET",
@@ -1464,7 +2188,7 @@
 					},
 					"response": [
 						{
-							"id": "2390d5f6-be81-49b4-a8d7-564aa19bb708",
+							"id": "0f49570e-810f-46de-bf51-d42980d6435c",
 							"name": "localhost:1337/api/pages/single-page",
 							"originalRequest": {
 								"method": "GET",
@@ -1604,7 +2328,7 @@
 					},
 					"response": [
 						{
-							"id": "d35131f4-d8e0-4db8-8a9d-48b998f90539",
+							"id": "49a463e9-9c84-4226-aaae-6a61de5f19e6",
 							"name": "localhost:1337/api/pages/update",
 							"originalRequest": {
 								"method": "PATCH",
@@ -1758,7 +2482,7 @@
 					},
 					"response": [
 						{
-							"id": "2e3d7780-4b93-4d00-aff7-400828495a4a",
+							"id": "fd572958-2461-47ca-8bc4-30f1619a7479",
 							"name": "localhost:1337/api/pages-delete",
 							"originalRequest": {
 								"method": "DELETE",

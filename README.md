@@ -55,7 +55,7 @@ yarn test
 #### Postman
 
 There is a postman collection file for API testing and development in
-`config/newseed-api.postman_collection.json`. It contains scripts and
+`test/newseed-api.postman_collection.json`. It contains scripts and
 basic CRUD for:
 
 * /auth
@@ -75,6 +75,13 @@ basic CRUD for:
   * [DEL] Single page (/:slug - with auth)
   * [GET] All pages (/)
   * [GET] Single page (/:slug)
+
+* /media
+  * [POST] Single medium (/ - with auth)
+  * [PATCH] Single medium (/:slug - with auth)
+  * [DEL] Single medium (/:slug - with auth)
+  * [GET] All media (/)
+  * [GET] Single medium (/:slug)
 
 ### To deploy on Heroku
 ```
