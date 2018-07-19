@@ -2,10 +2,10 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('PostTags', {
       postId: {
-        type: Sequelize.UUID
+        type: Sequelize.INTEGER
       },
       tagId: {
-        type: Sequelize.UUID
+        type: Sequelize.INTEGER
       },
       createdAt: {
         type: Sequelize.DATE

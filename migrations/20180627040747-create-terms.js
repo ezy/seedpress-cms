@@ -1,14 +1,16 @@
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Tags', {
+    return queryInterface.createTable('Terms', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER,
         autoIncrement: true
       },
-      tagName: {
+      termName: {
+        type: Sequelize.STRING
+      },
+      termSlug: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -20,6 +22,6 @@ module.exports = {
     });
   },
   down: (queryInterface) => {
-    return queryInterface.dropTable('Tags');
+    return queryInterface.dropTable('Terms');
   }
 };

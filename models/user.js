@@ -7,10 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    userName: DataTypes.STRING,
+    userEmail: DataTypes.STRING,
+    userPass: DataTypes.STRING
   }, {});
   return User;
 };

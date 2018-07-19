@@ -6,16 +6,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID
       },
-      firstName: {
+      userName: {
         type: Sequelize.STRING
       },
-      lastName: {
+      userEmail: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      password: {
+      userPass: {
         type: Sequelize.STRING
       },
       createdAt: {

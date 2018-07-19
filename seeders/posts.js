@@ -6,15 +6,17 @@ let postsList = [];
 for (let i = 0; i < 6; i++) {
   let title = faker.lorem.sentence(5);
   const postObj = {
-    id: faker.random.uuid(),
-    title: title,
-    slug: `${changeCase.paramCase(title)}-${Date.now()}`,
-    image: faker.image.imageUrl(),
-    category: faker.random.arrayElement(['news','event','need']),
-    date: new Date(),
-    expiry: faker.date.future(),
-    status: faker.random.arrayElement(['published','draft']),
-    content: faker.lorem.text(),
+    id: i,
+    postTitle: title,
+    postSlug: `${changeCase.paramCase(title)}-${Date.now()}`,
+    postDate: new Date(),
+    postContent: faker.lorem.sentences(3,3),
+    postAuthor: faker.name.findName(),
+    postImage: faker.image.imageUrl(),
+    postMedia: faker.image.imageUrl(),
+    postStatus: faker.random.arrayElement(['published','draft']),
+    postExpiry: faker.date.future(),
+    postFrequency: faker.random.arrayElement([null,'day','week','fortnight','month']),
     createdAt: new Date(),
     updatedAt: new Date()
   };

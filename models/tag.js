@@ -1,13 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Tag = sequelize.define('Tag', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      allowNull: false,
-      unique: true
+      autoIncrement: true,
+      allowNull: false
     },
-    name: {
+    tagName: {
       type: DataTypes.STRING,
       unique: true
     }
@@ -16,11 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     Tag.belongsToMany(models.Post, {
       through: 'PostTags',
       as: 'postTags',
-      foreignKey: 'tagId'
-    });
-    Tag.belongsToMany(models.Media, {
-      through: 'MediaTags',
-      as: 'mediaTags',
       foreignKey: 'tagId'
     });
   };

@@ -16,7 +16,7 @@ passport.use('local-login', new LocalStrategy({
   },
   (email, password, cb) => {
     // Sequelize will find the user with raw data returned
-    User.findOne({where: {email},raw: true})
+    User.findOne({where: {userEmail: email},raw: true})
       .then((user) => {
         if (!user) {
           return cb(null, false, {
@@ -24,7 +24,7 @@ passport.use('local-login', new LocalStrategy({
           });
         }
         // Don't forget bcrypt as passwords are encrypted
-        if (!bcrypt.compareSync(password, user.password)) {
+        if (!bcrypt.compareSync(password, user.userPass)) {
           return cb(null, false, {
             message: 'Incorrect email or password.'
           });
@@ -42,7 +42,7 @@ passport.use('local-register', new LocalStrategy({
   passwordField: 'password'
 }, (email, password, cb) => {
   // Sequelize will find the user with raw data returned
-  User.findOne({where: {email},raw: true})
+  User.findOne({where: {userEmail: email},raw: true})
     .then((user) => {
       if (user) {
         return cb(null, false, {
@@ -53,8 +53,8 @@ passport.use('local-register', new LocalStrategy({
       const hash = bcrypt.hashSync(password, salt);
 
       const userObj = {
-        email,
-        password: hash
+        userEmail: email,
+        userPass: hash
       };
 
       User.create(userObj)

@@ -1,11 +1,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('MediaTags', {
-      mediaId: {
-        type: Sequelize.UUID
+    return queryInterface.createTable('PostTags', {
+      postId: {
+        type: Sequelize.INTEGER
       },
-      tagId: {
-        type: Sequelize.UUID
+      termId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         type: Sequelize.DATE
@@ -16,6 +16,6 @@ module.exports = {
     });
   },
   down: (queryInterface) => {
-    return queryInterface.dropTable('MediaTags');
+    return queryInterface.dropTable('PostTags');
   }
 };

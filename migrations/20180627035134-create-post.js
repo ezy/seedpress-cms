@@ -5,35 +5,39 @@ module.exports = {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID
+        type: Sequelize.INTEGER,
+        autoIncrement: true
       },
-      title: {
+      postTitle: {
         type: Sequelize.STRING
       },
-      slug: {
+      postSlug: {
         type: Sequelize.STRING,
         unique: true
       },
-      image: {
-        type: Sequelize.STRING
-      },
-      category: {
-        type: Sequelize.STRING
-      },
-      frequency: {
-        type: Sequelize.STRING
-      },
-      date: {
+      postDate: {
         type: Sequelize.DATE
       },
-      expiry: {
-        type: Sequelize.DATE
-      },
-      status: {
-        type: Sequelize.STRING
-      },
-      content: {
+      postContent: {
         type: Sequelize.TEXT
+      },
+      postAuthor: {
+        type: Sequelize.STRING
+      },
+      postImage: {
+        type: Sequelize.STRING
+      },
+      postMedia: {
+        type: Sequelize.STRING
+      },
+      postStatus: {
+        type: Sequelize.STRING
+      },
+      postExpiry: {
+        type: Sequelize.DATE
+      },
+      postFrequency: {
+        type: Sequelize.STRING
       },
       createdAt: {
         type: Sequelize.DATE
