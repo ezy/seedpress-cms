@@ -1,4 +1,5 @@
-language: node_js
+language:
+  node_js
 node_js:
   - "8.11"
 services:
@@ -13,6 +14,7 @@ before_install:
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
 install:
+  - npm install -g codecov
   - npm install
 before_script:
   - psql -c 'CREATE DATABASE seedpress_test;' -U postgres
@@ -20,6 +22,8 @@ before_script:
   - sequelize db:migrate
   - sequelize db:seed:all
 script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec && codecov
+  - codecov
   - "npm run test"
   - "npm run lint"
 after_script: "npm -i coveralls@3.0.2 && cat ./coverage/lcov.info | coveralls"
