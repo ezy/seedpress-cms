@@ -4,17 +4,17 @@ const changeCase = require('change-case');
 
 // Create new post
 function createPost(req, res) {
-  const postTitle = req.body.postTitle ? req.body.postTitle.trim() : '';
+  const postTitle = req.body.postTitle ? req.body.postTitle.trim() : null;
   let postSlug = `${changeCase.paramCase(postTitle)}-${Date.now()}`;
   const postType = req.body.postType ? req.body.postType.trim() : 'post';
   const postDate = req.body.postDate ? req.body.postDate : new Date();
-  const postContent = req.body.postContent ? req.body.postContent.trim() : '';
-  const postAuthor = req.body.postAuthor ? req.body.postAuthor.trim() : '';
-  const postImage = req.body.postImage ? req.body.postImage.trim() : '';
-  const postMedia = req.body.postMedia ? req.body.postMedia.trim() : '';
-  const postStatus = req.body.postStatus ? req.body.postStatus.trim() : '';
-  const postExpiry = req.body.postExpiry ? req.body.postExpiry.trim() : '';
-  const postFrequency = req.body.postFrequency ? req.body.postFrequency.trim() : '';
+  const postContent = req.body.postContent ? req.body.postContent.trim() : null;
+  const postAuthor = req.body.postAuthor ? req.body.postAuthor.trim() : null;
+  const postImage = req.body.postImage ? req.body.postImage.trim() : null;
+  const postMedia = req.body.postMedia ? req.body.postMedia.trim() : null;
+  const postStatus = req.body.postStatus ? req.body.postStatus.trim() : 'draft';
+  const postExpiry = req.body.postExpiry ? req.body.postExpiry.trim() : null;
+  const postFrequency = req.body.postFrequency ? req.body.postFrequency.trim() : null;
 
   const postTerms = req.body.postTerms ? req.body.postTerms : [];
 
