@@ -30,14 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     postFrequency: DataTypes.STRING
   }, {});
   Post.associate = (models) => {
-    Post.belongsToMany(models.Tag, {
-      through: 'PostTags',
-      as: 'postTags',
-      foreignKey: 'postId'
-    });
     Post.belongsToMany(models.Term, {
       through: 'PostTerms',
-      as: 'postCategories',
+      as: 'postTerms',
       foreignKey: 'postId'
     });
   };

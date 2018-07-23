@@ -78,12 +78,16 @@ passport.use(new JWTStrategy({
   },
   (jwtPayload, cb) => {
     // Use the JWT token to find the user in the db if required
-    User.findOne({where: {email: jwtPayload.email},raw: true})
+    User.findOne({where: {userEmail: jwtPayload.userEmail},raw: true})
       .then((user) => {
-        return cb(null, user);
+        cb(null, user);
+        // deal with the promise return via null
+        return null;
       })
       .catch((err) => {
-        return cb(err);
+        cb(err, null);
+        
+        return null;
       });
   }
 ));

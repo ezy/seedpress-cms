@@ -6,7 +6,7 @@ let termList = [];
 for (let i = 0; i < 6; i++) {
   let name = faker.hacker.noun();
   const termObj = {
-    id: i,
+    id: faker.random.number(100000),
     termName: name,
     termSlug: changeCase.paramCase(name),
     createdAt: new Date(),

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('PostTags', {
+    return queryInterface.createTable('PostTerms', {
       postId: {
         type: Sequelize.INTEGER
       },
@@ -16,6 +16,6 @@ module.exports = {
     });
   },
   down: (queryInterface) => {
-    return queryInterface.dropTable('PostTags');
+    return queryInterface.dropTable('PostTerms');
   }
 };

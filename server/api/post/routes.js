@@ -8,13 +8,13 @@ router.route('/')
 router.route('/')
   .get(controller.getAllPosts);
 
-router.route('/:slug')
+router.route('/:postSlug')
   .get(controller.getPost);
 
-router.route('/:slug')
+router.route('/:postSlug')
   .patch(passport.authenticate('jwt', { session: false }), controller.updatePost);
 
-router.route('/:slug')
+router.route('/:postSlug')
   .delete(passport.authenticate('jwt', { session: false }), controller.deletePost);
 
 module.exports = router;

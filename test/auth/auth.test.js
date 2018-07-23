@@ -65,7 +65,7 @@ describe('[Authentication] /auth Testing', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('token');
-        expect(res.body).to.have.deep.property('user.email', email);
+        expect(res.body).to.have.deep.property('user.userEmail', email);
         done();
       });
   });

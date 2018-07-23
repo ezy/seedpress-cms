@@ -45,6 +45,8 @@ Then you'll need to adjust the config file `config/config.js` to suit your setup
 Then run `yarn reset` and your db will create from scratch and seed data under
 the db name `seedpress_dev`.
 
+Running `yarn dev` will start your dev server where needed.
+
 ### Testing
 
 You'll need to setup the test server using `yarn resettest`. To trigger the mocha/chai tests enter:

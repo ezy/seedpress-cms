@@ -1,3 +1,7 @@
+/**
+ * Terms are used for categorising posts. They can be a category, or tag
+ */
+
 module.exports = (sequelize, DataTypes) => {
   const Term = sequelize.define('Term', {
     id: {
@@ -7,18 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     termName: {
-      type: DataTypes.STRING,
-      unique: true
+      type: DataTypes.STRING
     },
     termSlug: {
       type: DataTypes.STRING,
-      allowNull: false
+      unique: true
     }
   }, {});
   Term.associate = (models) => {
     Term.belongsToMany(models.Post, {
       through: 'PostTerms',
-      as: 'postCategories',
+      as: 'postTerms',
       foreignKey: 'termId'
     });
   };

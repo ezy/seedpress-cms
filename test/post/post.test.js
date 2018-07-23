@@ -10,7 +10,22 @@ describe('[POST] /api/posts Testing', () => {
 
   let postSlug = '',
       token = '',
-      postKeys = ['id', 'title', 'slug', 'category', 'image', 'date', 'expiry', 'postTags', 'frequency', 'createdAt', 'status', 'content', 'updatedAt'];
+      postKeys = [
+        'id',
+        'postTitle',
+        'postSlug',
+        'postDate',
+        'postContent',
+        'postAuthor',
+        'postImage',
+        'postMedia',
+        'postStatus',
+        'postExpiry',
+        'postFrequency',
+        'postTerms',
+        'createdAt',
+        'updatedAt'
+      ];
 
   it('should be able to get a list of all seeded posts', (done) => {
     request(app)
@@ -20,7 +35,7 @@ describe('[POST] /api/posts Testing', () => {
         expect(res.body.posts).to.be.an('array');
         expect(res.body.posts[0]).to.have.all.keys(postKeys);
         // set post id for next test
-        postSlug = res.body.posts[0].slug;
+        postSlug = res.body.posts[0].postSlug;
         done();
       });
   });
@@ -49,24 +64,27 @@ describe('[POST] /api/posts Testing', () => {
       .end((err, res) => {
         token = res.body.token;
         title = faker.lorem.sentence(5);
+        let postRequest = {
+          postTitle: title,
+          postSlug: `${changeCase.paramCase(title)}-${Date.now()}`,
+          postDate: new Date(),
+          postContent: faker.lorem.sentences(3,3),
+          postAuthor: faker.name.findName(),
+          postImage: faker.image.imageUrl(),
+          postMedia: faker.image.imageUrl(),
+          postStatus: faker.random.arrayElement(['published','draft']),
+          postExpiry: faker.date.future(),
+          postFrequency: faker.random.arrayElement([null,'day','week','fortnight','month'])
+        }
         request(app)
           .post(`/api/posts`)
-          .send({
-            title: title,
-            slug: `${changeCase.paramCase(title)}-${Date.now()}`,
-            image: faker.image.imageUrl(),
-            category: faker.random.arrayElement(['news', 'event', 'need']),
-            date: new Date(),
-            expiry: faker.date.future(),
-            status: faker.random.arrayElement(['published', 'draft']),
-            content: faker.lorem.text()
-          })
+          .send(postRequest)
           .set('Authorization', `Bearer ${token}`)
           .set('Accept', 'application/json')
           .expect('Content-Type', /json/)
           .expect(201)
           .end((err, res) => {
-            postSlug = res.body.post.slug;
+            postSlug = res.body.post.postSlug;
             expect(res.body.post).to.be.an('object');
             expect(res.body.post).to.have.all.keys(postKeys);
             request(app)
