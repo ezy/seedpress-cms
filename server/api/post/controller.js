@@ -25,6 +25,17 @@ function createPost(req, res) {
     });
   }
 
+  postTerms.forEach((term) => {
+    let termType = term.termType;
+    let termName = term.termName;
+    if (!termName || !termType) {
+      return res.status(422).send({
+        error: 'All terms require a termType and termName.'
+      });
+    }
+    term.termSlug = `${changeCase.paramCase(termType)}-${changeCase.paramCase(termName)}`;
+  });
+
   let newPost = {
     postTitle,
     postSlug,
@@ -45,20 +56,13 @@ function createPost(req, res) {
       newPost.postTerms = postTerms;
       if (postTerms.length) {
         postTerms.forEach((term) => {
-          let termType = term.termType;
-          let termName = term.termName;
-          if (!termName || !term.termType) {
-            return res.status(422).send({
-              error: 'All terms require a termType and termName.'
-            });
-          }
-          term.termSlug = `${changeCase.paramCase(termType)}-${changeCase.paramCase(termName)}`;
+          let { termType, termName, termSlug } = term;
           Term.findOrCreate({
-            where: { termSlug: term.termSlug },
+            where: { termSlug },
             defaults: { termType, termName }
           })
             .spread((term2) => {
-              return term2;
+              return post.addPostTerm(term2);
             });
         });
       }
