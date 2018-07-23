@@ -133,10 +133,10 @@ function updatePost(req, res) {
       if (!post.dataValues.postSlug.includes(newTitle)) {
         req.body.postSlug = `${newTitle}-${Date.now()}`;
       }
-      return post.uppostDateAttributes(req.body);
+      return post.updateAttributes(req.body);
     })
-    .then((uppostDatedPost) => {
-      res.json(uppostDatedPost);
+    .then((updatedPost) => {
+      res.json(updatedPost);
     })
     .catch((err) => res.status(400).send({
       error: err.message

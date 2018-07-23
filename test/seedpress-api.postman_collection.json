@@ -1,0 +1,1039 @@
+{
+	"info": {
+		"_postman_id": "f97e2d84-9654-400b-b368-a05933b11a6c",
+		"name": "seedpress-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost: 1337/auth/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"new@user.com\",\"password\":\"passwrod\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "232f24f1-1a13-4cc1-b4ea-82b567b92a0d",
+							"name": "localhost: 1337/auth/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\":\"new@user.com\",\"password\":\"passwrod\"}"
+								},
+								"url": {
+									"raw": "localhost:1337/auth/register",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "776",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 16 Jul 2018 04:53:21 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"308-i+MiB35zBWmyyynQxm0G0r/hiWA\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"user\":{\"id\":\"aa305d9d-eb35-4fd2-81fe-023edb828430\",\"email\":\"new@user.com\",\"password\":\"$2b$10$F9sE70763SGtpc4j7V5Qhuo.nPmrWbTpWjGC7ZKwFzpX.S44yuSke\",\"updatedAt\":\"2018-07-16T04:53:21.647Z\",\"createdAt\":\"2018-07-16T04:53:21.647Z\",\"firstName\":null,\"lastName\":null},\"message\":\"User created successfully.\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFhMzA1ZDlkLWViMzUtNGZkMi04MWZlLTAyM2VkYjgyODQzMCIsImVtYWlsIjoibmV3QHVzZXIuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkRjlzRTcwNzYzU0d0cGM0ajdWNVFodW8ublBtcldiVHBXakdDN1pLd0Z6cFguUzQ0eXVTa2UiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTE2VDA0OjUzOjIxLjY0N1oiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTE2VDA0OjUzOjIxLjY0N1oiLCJmaXJzdE5hbWUiOm51bGwsImxhc3ROYW1lIjpudWxsLCJpYXQiOjE1MzE3MTY4MDEsImV4cCI6MTUzNDMwODgwMX0.RnhNEsgRwAA329dfYTAb2zumjDTps1BWS-wsJqWiYoc\"}"
+						}
+					]
+				},
+				{
+					"name": "localhost: 1337/auth/login/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"user@email.com\",\"password\":\"passwrod\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3f93c69f-b3f8-4b3f-83f1-dadd14e78ab7",
+							"name": "localhost: 1337/auth/login/",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\":\"user@email.com\",\"password\":\"passwrod\"}"
+								},
+								"url": {
+									"raw": "localhost:1337/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "786",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 16 Jul 2018 04:49:16 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"312-MnA2Kb1b2Y90PNhcT4kiNbko3Y8\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"user\":{\"id\":\"078b0d47-aad2-416a-8b46-5eafbe9c8d91\",\"firstName\":\"John\",\"lastName\":\"User\",\"email\":\"user@email.com\",\"password\":\"$2b$10$dC4GbBR9fmVF9xK6vth/zO.VQqinUoGF8hx6.mdbA/tGuEjKrl/u2\",\"createdAt\":\"2018-07-16T04:44:51.309Z\",\"updatedAt\":\"2018-07-16T04:44:51.309Z\"},\"message\":\"Logged in successfully\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA3OGIwZDQ3LWFhZDItNDE2YS04YjQ2LTVlYWZiZTljOGQ5MSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IlVzZXIiLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZEM0R2JCUjlmbVZGOXhLNnZ0aC96Ty5WUXFpblVvR0Y4aHg2Lm1kYkEvdEd1RWpLcmwvdTIiLCJjcmVhdGVkQXQiOiIyMDE4LTA3LTE2VDA0OjQ0OjUxLjMwOVoiLCJ1cGRhdGVkQXQiOiIyMDE4LTA3LTE2VDA0OjQ0OjUxLjMwOVoiLCJpYXQiOjE1MzE3MTY1NTYsImV4cCI6MTUzNDMwODU1Nn0.alJ1-EjEr-v9B3ASLE0mwFu9qttGTk0EW5iUe3T_d-M\"}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:1337/api/posts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"postTitle\": \"A new post\",\"postType\": \"post\",\"postDate\": \"2018-07-02T00:36:26.371Z\",\"postContent\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\": \"published\",\"postExpiry\": \"2019-05-16T16:49:00.638Z\",\"postTerms\":[{\"termType\":\"tag\",\"termName\":\"fws\"},{\"termType\":\"tag\",\"termName\":\"Ho\"}]}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "dcf60ef0-0cf5-436f-ba1c-77a84d1b003a",
+							"name": "localhost:1337/api/posts",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"postTitle\": \"A new post\",\"postType\": \"post\",\"postDate\": \"2018-07-02T00:36:26.371Z\",\"postContent\": \"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\": \"published\",\"postExpiry\": \"2019-05-16T16:49:00.638Z\",\"postTerms\":[{\"termType\":\"tag\",\"termName\":\"fws\"},{\"termType\":\"tag\",\"termName\":\"Ho\"}]}"
+								},
+								"url": {
+									"raw": "localhost:1337/api/posts",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jul 2018 04:16:54 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"406-W9u+n1QRvBEUwEE/t+0Y9/uEgh4\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"post\":{\"id\":1,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532319414478\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"updatedAt\":\"2018-07-23T04:16:54.480Z\",\"createdAt\":\"2018-07-23T04:16:54.480Z\",\"postTerms\":[{\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]}}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "fd1ded84-6de0-405a-9fd9-55bea7e44370",
+							"name": "localhost:1337/api/posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:1337/api/posts",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jul 2018 03:01:48 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3292-xdLPtorrPp8BrBKyuFhEtkwTRGk\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"posts\":[{\"id\":3,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314507359\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T02:55:07.361Z\",\"updatedAt\":\"2018-07-23T02:55:07.361Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":4,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314625998\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T02:57:06.000Z\",\"updatedAt\":\"2018-07-23T02:57:06.000Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":5,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314698450\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T02:58:18.452Z\",\"updatedAt\":\"2018-07-23T02:58:18.452Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":6,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314808493\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T03:00:08.495Z\",\"updatedAt\":\"2018-07-23T03:00:08.495Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":7,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314846653\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T03:00:46.655Z\",\"updatedAt\":\"2018-07-23T03:00:46.655Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":8,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314885420\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T03:01:25.421Z\",\"updatedAt\":\"2018-07-23T03:01:25.421Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":9,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314902103\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T03:01:42.105Z\",\"updatedAt\":\"2018-07-23T03:01:42.105Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]},{\"id\":78599,\"postTitle\":\"Velit libero voluptatem repellendus praesentium.\",\"postSlug\":\"velit-libero-voluptatem-repellendus-praesentium-1532314385532\",\"postType\":\"post\",\"postDate\":\"2018-07-23T02:53:05.532Z\",\"postContent\":\"Est quidem dolores repudiandae at magni suscipit corrupti quia dolore.3Dolore aperiam id iure quam asperiores.3Animi odit exercitationem est ducimus voluptatem officiis est nesciunt saepe.\",\"postAuthor\":\"Kamron Daniel\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"draft\",\"postExpiry\":\"2018-07-29T18:36:13.864Z\",\"postFrequency\":\"day\",\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]},{\"id\":90316,\"postTitle\":\"Debitis quos odio mollitia quo.\",\"postSlug\":\"debitis-quos-odio-mollitia-quo-1532314385532\",\"postType\":\"page\",\"postDate\":\"2018-07-23T02:53:05.532Z\",\"postContent\":\"Aut cupiditate consectetur quod rerum distinctio.3Corrupti rerum et laudantium ad itaque sint.3Est qui et pariatur deleniti laudantium.\",\"postAuthor\":\"Kailyn Muller Jr.\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"published\",\"postExpiry\":\"2018-11-01T05:16:57.974Z\",\"postFrequency\":\"fortnight\",\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]},{\"id\":40194,\"postTitle\":\"Et sunt provident voluptas et.\",\"postSlug\":\"et-sunt-provident-voluptas-et-1532314385532\",\"postType\":\"post\",\"postDate\":\"2018-07-23T02:53:05.532Z\",\"postContent\":\"Molestias magnam consequatur quis voluptas debitis et.3Reprehenderit enim culpa qui beatae sed impedit nihil.3Iste numquam et repudiandae velit odit commodi labore quidem.\",\"postAuthor\":\"Jeremie Gottlieb\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"draft\",\"postExpiry\":\"2018-08-26T21:45:38.271Z\",\"postFrequency\":\"fortnight\",\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]},{\"id\":94383,\"postTitle\":\"Blanditiis ea natus quam repudiandae.\",\"postSlug\":\"blanditiis-ea-natus-quam-repudiandae-1532314385531\",\"postType\":\"page\",\"postDate\":\"2018-07-23T02:53:05.531Z\",\"postContent\":\"Nulla ut dolor.3Occaecati facilis aut.3Exercitationem qui illo ducimus veritatis omnis accusantium.\",\"postAuthor\":\"Audra Fisher IV\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"draft\",\"postExpiry\":\"2018-12-30T20:10:47.859Z\",\"postFrequency\":null,\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]},{\"id\":2,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314450730\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T02:54:10.730Z\",\"updatedAt\":\"2018-07-23T02:54:10.730Z\",\"postTerms\":[]},{\"id\":28749,\"postTitle\":\"Nulla suscipit qui animi labore.\",\"postSlug\":\"nulla-suscipit-qui-animi-labore-1532314385532\",\"postType\":\"page\",\"postDate\":\"2018-07-23T02:53:05.532Z\",\"postContent\":\"Recusandae illum soluta et nihil est eos quia quis.3Rerum rem aut inventore deleniti accusamus veritatis architecto id voluptas.3Sed molestias error iusto vero.\",\"postAuthor\":\"Etha Cormier\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"published\",\"postExpiry\":\"2019-01-09T13:14:09.794Z\",\"postFrequency\":null,\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]},{\"id\":1,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532314391936\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T02:53:11.938Z\",\"updatedAt\":\"2018-07-23T02:53:11.938Z\",\"postTerms\":[]},{\"id\":48459,\"postTitle\":\"Aperiam ratione iste consequatur id.\",\"postSlug\":\"aperiam-ratione-iste-consequatur-id-1532314385532\",\"postType\":\"post\",\"postDate\":\"2018-07-23T02:53:05.532Z\",\"postContent\":\"Rerum aliquid ipsam laborum vel.3Facilis eaque temporibus.3Quis nesciunt rerum aspernatur commodi et nemo modi et tempora.\",\"postAuthor\":\"Barton O'Hara\",\"postImage\":\"http://lorempixel.com/640/480\",\"postMedia\":\"http://lorempixel.com/640/480\",\"postStatus\":\"draft\",\"postExpiry\":\"2018-11-17T05:30:11.263Z\",\"postFrequency\":\"fortnight\",\"createdAt\":\"2018-07-23T02:53:05.532Z\",\"updatedAt\":\"2018-07-23T02:53:05.532Z\",\"postTerms\":[]}]}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/posts/get-single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:1337/api/posts/a-new-post-1532319459574",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"a-new-post-1532319459574"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2be941a0-97be-424f-a259-f3fcc44a0490",
+							"name": "localhost:1337/api/posts/get-single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:1337/api/posts/a-new-post-1532319459574",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"posts",
+										"a-new-post-1532319459574"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jul 2018 04:17:50 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"414-QVDHZKEdrf2mpxWGi/C9cpyngEM\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"post\":{\"id\":2,\"postTitle\":\"A new post\",\"postSlug\":\"a-new-post-1532319459574\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T04:17:39.574Z\",\"updatedAt\":\"2018-07-23T04:17:39.574Z\",\"postTerms\":[{\"id\":1,\"termType\":\"tag\",\"termName\":\"fws\",\"termSlug\":\"tag-fws\"},{\"id\":2,\"termType\":\"tag\",\"termName\":\"Ho\",\"termSlug\":\"tag-ho\"}]}}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/posts/update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"postTitle\": \"A goodsss day\"}"
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts/a-new-post-1532319459574",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"a-new-post-1532319459574"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "58bcf9df-5460-4ed3-bc20-7d18a4581b0d",
+							"name": "localhost:1337/api/posts/update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"postTitle\": \"A goodsss day\"}"
+								},
+								"url": {
+									"raw": "localhost:1337/api/posts/a-new-post-1532319459574",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"posts",
+										"a-new-post-1532319459574"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "901",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jul 2018 04:19:05 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"385-/8/0KZuutPPJMxkE5JHarcUf3gA\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":2,\"postTitle\":\"A goodsss day\",\"postSlug\":\"a-goodsss-day-1532319545369\",\"postType\":\"post\",\"postDate\":\"2018-07-02T00:36:26.371Z\",\"postContent\":\"Reprehenderit cum delectus voluptas. Aut ut veritatis. Maiores voluptas voluptas officia tenetur qui eligendi quam perspiciatis. Delectus maiores aut laboriosam quae sunt.\\n \\rVoluptas labore distinctio quisquam ratione esse. Eaque dolores aut cumque soluta consectetur sed nihil. Iusto qui quos a sit inventore vel cumque facere quibusdam. Mollitia nam facere natus.\\n \\rTempora esse eos quasi. Rerum cum omnis. Veniam laboriosam alias. Aliquid alias quisquam ratione pariatur placeat nobis labore. Debitis sed deserunt.\",\"postAuthor\":\"Brutus Maximus\",\"postImage\":\"/url\",\"postMedia\":\"/url\",\"postStatus\":\"published\",\"postExpiry\":\"2019-05-16T16:49:00.638Z\",\"postFrequency\":\"\",\"createdAt\":\"2018-07-23T04:17:39.574Z\",\"updatedAt\":\"2018-07-23T04:19:05.370Z\"}"
+						}
+					]
+				},
+				{
+					"name": "localhost:1337/api/posts-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:1337/api/posts/a-new-post-1532319414478",
+							"host": [
+								"localhost"
+							],
+							"port": "1337",
+							"path": [
+								"api",
+								"posts",
+								"a-new-post-1532319414478"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2209906a-504e-4d59-a197-b59995ab436d",
+							"name": "localhost:1337/api/posts-delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2OTEzMGViLWVkZjItNDg1ZS1iMDNhLWZiZDlmYjhlZDNjZiIsInVzZXJOYW1lIjoiSm9obiBVc2VyIiwidXNlckVtYWlsIjoidXNlckBlbWFpbC5jb20iLCJ1c2VyUGFzcyI6IiQyYiQxMCR3RVNtMXNJb2ZrYmJsNnBrSG9XeW91VWpnaFhqekRRRU1sWTdxNXdVN0NITlU0ZXFLMlE3MiIsImNyZWF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDctMjNUMDI6Mzg6MDkuMzc0WiIsImlhdCI6MTUzMjMxMzUwMCwiZXhwIjoxNTM0OTA1NTAwfQ.SfEBe7MW46BnN2Gjo2pksb7cpnITs5UVnW5zlDCsajI",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:1337/api/posts/a-new-post-1532319414478",
+									"host": [
+										"localhost"
+									],
+									"port": "1337",
+									"path": [
+										"api",
+										"posts",
+										"a-new-post-1532319414478"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jul 2018 04:20:24 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-lhVHv+7L+msMz2SssxfwWOkXoP0\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"name": "X-DNS-Prefetch-Control",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"name": "X-Download-Options",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":\"Post successfully deleted.\"}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

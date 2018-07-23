@@ -27,9 +27,41 @@ Seedpress is a headless Node JS API server built with Express, for PostgreSQL us
 * [X] Authentication with JSON Web Token
 * [X] Email, Password validations
 * [X] User login and registration
-* [X] API and Unit testing
-* [X] Page, Post, Media and Tag models
+* [X] Full API and Unit test coverage
+* [X] Page and Term models with belongsToMany two way relationship
 * [X] Easily deployable to Heroku (Procfile)
+
+### Schema
+
+* Post
+  * id
+  * postTitle
+  * postSlug   
+  * postType     
+  * postDate
+  * postContent  
+  * postAuthor     
+  * postImage      
+  * postMedia
+  * postStatus
+  * postExpiry
+  * postFrequency
+  * postTerms
+  * createdAt
+  * updatedAt
+
+* Terms
+  * id
+  * termType
+  * termName
+  * createdAt
+  * updatedAt
+
+* PostTerms
+  * termId
+  * postId
+  * createdAt
+  * updatedAt
 
 ### To run locally
 
@@ -57,7 +89,7 @@ yarn test
 #### Postman
 
 There is a postman collection file for API testing and development in
-`test/newseed-api.postman_collection.json`. It contains scripts and
+`test/seedpress-api.postman_collection.json`. It contains scripts and
 basic CRUD for:
 
 * /auth
@@ -70,20 +102,6 @@ basic CRUD for:
   * [DEL] Single post (/:slug - with auth)
   * [GET] All posts (/)
   * [GET] Single post (/:slug)
-
-* /pages
-  * [POST] Single page (/ - with auth)
-  * [PATCH] Single page (/:slug - with auth)
-  * [DEL] Single page (/:slug - with auth)
-  * [GET] All pages (/)
-  * [GET] Single page (/:slug)
-
-* /media
-  * [POST] Single medium (/ - with auth)
-  * [PATCH] Single medium (/:slug - with auth)
-  * [DEL] Single medium (/:slug - with auth)
-  * [GET] All media (/)
-  * [GET] Single medium (/:slug)
 
 ### To deploy on Heroku
 ```
