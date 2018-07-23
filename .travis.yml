@@ -21,7 +21,7 @@ before_script:
   - sequelize db:migrate
   - sequelize db:seed:all
 script:
-  - istanbul cover ./node_modules/.bin/mocha -- -R spec 'test/**/**.test.js'"
+  - istanbul cover ./node_modules/.bin/mocha -- -R spec 'test/**/**.test.js'
   - ./node_modules/.bin/codecov
   - "npm run test"
   - "npm run lint"
