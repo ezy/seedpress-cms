@@ -15,6 +15,9 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      postType: {
+        type: Sequelize.STRING
+      },
       postDate: {
         type: Sequelize.DATE
       },

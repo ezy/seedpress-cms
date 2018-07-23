@@ -6,6 +6,7 @@ const changeCase = require('change-case');
 function createPost(req, res) {
   const postTitle = req.body.postTitle ? req.body.postTitle.trim() : '';
   let postSlug = `${changeCase.paramCase(postTitle)}-${Date.now()}`;
+  const postType = req.body.postType ? req.body.postType.trim() : 'post';
   const postDate = req.body.postDate ? req.body.postDate : new Date();
   const postContent = req.body.postContent ? req.body.postContent.trim() : '';
   const postAuthor = req.body.postAuthor ? req.body.postAuthor.trim() : '';
@@ -27,6 +28,7 @@ function createPost(req, res) {
   let newPost = {
     postTitle,
     postSlug,
+    postType,
     postDate,
     postContent,
     postAuthor,

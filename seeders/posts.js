@@ -9,6 +9,7 @@ for (let i = 0; i < 6; i++) {
     id: faker.random.number(100000),
     postTitle: title,
     postSlug: `${changeCase.paramCase(title)}-${Date.now()}`,
+    postType: faker.random.arrayElement(['post','page']),
     postDate: new Date(),
     postContent: faker.lorem.sentences(3,3),
     postAuthor: faker.name.findName(),

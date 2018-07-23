@@ -14,6 +14,7 @@ describe('[POST] /api/posts Testing', () => {
         'id',
         'postTitle',
         'postSlug',
+        'postType',
         'postDate',
         'postContent',
         'postAuthor',
@@ -67,6 +68,7 @@ describe('[POST] /api/posts Testing', () => {
         let postRequest = {
           postTitle: title,
           postSlug: `${changeCase.paramCase(title)}-${Date.now()}`,
+          postType: faker.random.arrayElement(['post','page']),
           postDate: new Date(),
           postContent: faker.lorem.sentences(3,3),
           postAuthor: faker.name.findName(),
