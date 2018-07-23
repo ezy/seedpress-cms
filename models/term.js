@@ -1,5 +1,15 @@
 /**
- * Terms are used for categorising posts. They can be a category, or tag
+ * Terms are used for categorising posts. They belong to many posts and can
+ * have many labels. Need to create a post with tags? Then you might create a post
+ * with a 'tag' term:
+ *
+ * postTerms: [{
+ *    termType: tag,
+ *    termName: business
+ *  },{
+ *    termType: tag,
+ *    termName: pleasure
+ *  }]
  */
 
 module.exports = (sequelize, DataTypes) => {
@@ -9,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
+    },
+    termType: {
+      type: DataTypes.STRING
     },
     termName: {
       type: DataTypes.STRING

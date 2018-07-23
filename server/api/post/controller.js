@@ -45,16 +45,17 @@ function createPost(req, res) {
       newPost.postTerms = postTerms;
       if (postTerms.length) {
         postTerms.forEach((term) => {
+          let termType = term.termType;
           let termName = term.termName;
-          if (!termName) {
+          if (!termName || !term.termType) {
             return res.status(422).send({
-              error: 'All terms require a termName.'
+              error: 'All terms require a termType and termName.'
             });
           }
-          term.termSlug = changeCase.paramCase(termName);
+          term.termSlug = `${changeCase.paramCase(termType)}-${changeCase.paramCase(termName)}`;
           Term.findOrCreate({
             where: { termSlug: term.termSlug },
-            defaults: { termName }
+            defaults: { termType, termName }
           })
             .spread((term2) => {
               return term2;
@@ -74,7 +75,7 @@ function getAllPosts(req, res) {
         model: Term,
         as: 'postTerms',
         required: false,
-        attributes: ['id','termName','termSlug'],
+        attributes: ['id','termType','termName','termSlug'],
         through: { attributes: [] }
       }]
     })
@@ -93,7 +94,7 @@ function getPost(req, res) {
         model: Term,
         as: 'postTerms',
         required: false,
-        attributes: ['id','termName','termSlug'],
+        attributes: ['id','termType','termName','termSlug'],
         through: { attributes: [] }
       }]
     })

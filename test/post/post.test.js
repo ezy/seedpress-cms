@@ -76,7 +76,17 @@ describe('[POST] /api/posts Testing', () => {
           postMedia: faker.image.imageUrl(),
           postStatus: faker.random.arrayElement(['published','draft']),
           postExpiry: faker.date.future(),
-          postFrequency: faker.random.arrayElement([null,'day','week','fortnight','month'])
+          postFrequency: faker.random.arrayElement([null,'day','week','fortnight','month']),
+          postTerms: [{
+            termType: 'tag',
+            termName: 'fws'
+          }, {
+            termType: 'tag',
+            termName: 'Ho'
+          }, {
+            termType: 'category',
+            termName: 'Ho'
+          }]
         }
         request(app)
           .post(`/api/posts`)
