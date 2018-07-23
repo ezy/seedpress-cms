@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/ezy/seedpress-cms.svg?branch=master)](https://travis-ci.com/ezy/seedpress-cms)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Seedpress is a headless Node JS API server built with Express, for PostgreSQL using Sequelize ORM. It generally follows the logic and conventions of the Wordpress Page, Post and Media schema eg. Post schema - title, slug, image, category, date, expiry, frequency, status, text. Seedpress authenticates users using JSON web tokens managed by Passport. It's production ready, (although there are still a number of tests to write) and should work as a great starter for any content based Progressive Web Application.
+Seedpress is a headless Node JS API server built with Express, for PostgreSQL using Sequelize ORM. It generally follows the logic and conventions of the Wordpress schema. Seedpress authenticates users using JSON web tokens managed by Passport. It's production ready, and should work as a great starter for any content based Progressive Web Application.
 
 * [Node.js](https://nodejs.org/en/)
 * [PostgreSQL](https://www.postgresql.org/)
