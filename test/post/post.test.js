@@ -128,9 +128,25 @@ describe('[POST] /api/posts Testing', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
+        postSlug = res.body.post.postSlug;
         expect(res.body.post).to.be.an('object');
         expect(res.body.post).to.have.all.keys(postKeys);
         expect(res.body.post.postSlug).to.include(changeCase.paramCase(newTitle));
+        done();
+      });
+  });
+
+  it('update should error with wrong post slug', (done) => {
+    request(app)
+      .patch('/api/posts/no-post-here')
+      .send(postRequest)
+      .set('Authorization', `Bearer ${token}`)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(400)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error');
+        expect(res.body).to.have.deep.property('error', 'No post found');
         done();
       });
   });
@@ -144,6 +160,8 @@ describe('[POST] /api/posts Testing', () => {
       .expect(202)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('success');
+        expect(res.body).to.have.deep.property('success', 'Post successfully deleted.');
         done();
       });
   });
