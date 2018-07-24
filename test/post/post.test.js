@@ -28,7 +28,6 @@ describe('[POST] /api/posts Testing', () => {
       ],
       postRequest = {
         postTitle: title,
-        postSlug: `${changeCase.paramCase(title)}-${Date.now()}`,
         postType: faker.random.arrayElement(['post','page']),
         postDate: new Date(),
         postContent: faker.lorem.sentences(3,3),
@@ -91,6 +90,17 @@ describe('[POST] /api/posts Testing', () => {
       });
   });
 
+  it('should error with wrong post slug', (done) => {
+    request(app)
+      .get('/api/posts/no-post-here')
+      .expect(400)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error');
+        expect(res.body).to.have.deep.property('error', 'No post found');
+        done();
+      });
+  });
+
   it('should be able to create a post if logged in', (done) => {
     request(app)
       .post('/api/posts')
@@ -119,6 +129,17 @@ describe('[POST] /api/posts Testing', () => {
       });
   });
 
+  it('should error with wrong delete post slug', (done) => {
+    request(app)
+      .get(`/api/posts/${postSlug}`)
+      .expect(400)
+      .end((err, res) => {
+        expect(res.body).to.have.property('error');
+        expect(res.body).to.have.deep.property('error', 'No post found');
+        done();
+      });
+  });
+
   it('it should reject post with no title', (done) => {
     request(app)
       .post('/api/posts')
@@ -128,7 +149,6 @@ describe('[POST] /api/posts Testing', () => {
       .expect('Content-Type', /json/)
       .expect(422)
       .end((err, res) => {
-        console.log('***********************',res.body);
         expect(res.body).to.have.property('error');
         expect(res.body).to.have.deep.property('error', 'A postTitle is required.');
         done();
@@ -157,6 +177,6 @@ describe('[POST] /api/posts Testing', () => {
         expect(res.body).to.have.property('error');
         expect(res.body).to.have.deep.property('error', 'All terms require a termType and termName.');
         done();
-      })
+      });
   });
 });

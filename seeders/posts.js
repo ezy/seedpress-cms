@@ -3,7 +3,7 @@ const changeCase = require('change-case');
 
 let postsList = [];
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 2; i++) {
   let title = faker.lorem.sentence(5);
   const postObj = {
     id: faker.random.number(100000),

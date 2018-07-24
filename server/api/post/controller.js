@@ -47,26 +47,18 @@ function createPost(req, res) {
     postMedia,
     postStatus,
     postExpiry,
-    postFrequency
+    postFrequency,
+    postTerms
   };
 
-  Post.create(newPost)
+  Post.create(newPost, {
+      include: [{
+        model: Term,
+        as: 'postTerms'
+      }]
+    })
     .then((post) => {
-      newPost = post.dataValues;
-      newPost.postTerms = postTerms;
-      if (postTerms.length) {
-        postTerms.forEach((term) => {
-          let { termType, termName, termSlug } = term;
-          Term.findOrCreate({
-            where: { termSlug },
-            defaults: { termType, termName }
-          })
-            .spread((term2) => {
-              return post.addPostTerm(term2);
-            });
-        });
-      }
-      return res.json({'post': newPost});
+      return res.json({post: post});
     })
     .catch((err) => res.status(400).send({
       error: err.errors
@@ -120,7 +112,14 @@ function updatePost(req, res) {
 
   const postSlug = req.params.postSlug;
 
-  Post.findOne({where: { postSlug }})
+  Post.findOne({where: { postSlug }, include: [{
+        model: Term,
+        as: 'postTerms',
+        required: false,
+        attributes: ['id','termType','termName','termSlug'],
+        through: { attributes: [] }
+      }]
+    })
     .then((post) => {
       if (!post) {
         return res.status(404).send({
@@ -128,15 +127,42 @@ function updatePost(req, res) {
         });
       }
 
-      // Change the postSlug if the postTitle is different
-      let newTitle = changeCase.paramCase(req.body.postTitle);
-      if (!post.dataValues.postSlug.includes(newTitle)) {
-        req.body.postSlug = `${newTitle}-${Date.now()}`;
+      // Update the post slug based on the title if title is new
+      const postTitle = req.body.postTitle ? req.body.postTitle.trim() : null;
+      if (req.body.postTitle && !post.dataValues.postSlug.includes(`${changeCase.paramCase(postTitle)}`)) {
+        let slug = postTitle ? `${changeCase.paramCase(postTitle)}-${Date.now()}` : null;
+        req.body.postSlug = slug;
       }
-      return post.updateAttributes(req.body);
-    })
-    .then((updatedPost) => {
-      res.json(updatedPost);
+
+      let termsPromises = [];
+
+      if (req.body.postTerms) {
+        post.setPostTerms();
+        req.body.postTerms.forEach((term) => {
+          let { termType, termName } = term;
+          term.termSlug = `${changeCase.paramCase(termType)}-${changeCase.paramCase(termName)}`;
+          let termReq = Term.findOrCreate({where: {termSlug: term.termSlug}, defaults: { termType, termName }})
+            .spread((term2) => {
+              post.addPostTerm(term2);
+            });
+          termsPromises.push(termReq);
+        });
+      }
+
+      post.updateAttributes(req.body);
+
+      Promise.all([
+        termsPromises
+      ])
+      .then(() => {
+        return post.save();
+      })
+      .then((post2) => {
+        return res.json({ post: post2 });
+      })
+      .catch((err) => res.status(400).send({
+        error: err.message
+      }));
     })
     .catch((err) => res.status(400).send({
       error: err.message
