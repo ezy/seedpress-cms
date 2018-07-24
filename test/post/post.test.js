@@ -116,6 +116,25 @@ describe('[POST] /api/posts Testing', () => {
       });
   });
 
+  it('should be able to update a post if logged in', (done) => {
+    let updatedPost = postRequest,
+        newTitle = faker.lorem.sentence(1);
+    updatedPost.postTitle = newTitle;
+    request(app)
+      .patch(`/api/posts/${postSlug}`)
+      .send(updatedPost)
+      .set('Authorization', `Bearer ${token}`)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.post).to.be.an('object');
+        expect(res.body.post).to.have.all.keys(postKeys);
+        expect(res.body.post.postSlug).to.include(changeCase.paramCase(newTitle));
+        done();
+      });
+  });
+
   it('should be able to delete a post if logged in', (done) => {
     request(app)
       .delete(`/api/posts/${postSlug}`)
